@@ -1,0 +1,75 @@
+name: Données et déploiement
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Chaque lundi à 05:17 UTC : récupération des données Eurostat puis republication
+    - cron: "17 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Récupérer les données Eurostat
+        run: npm run fetch
+
+      - name: Enregistrer les nouvelles données dans le dépôt
+        if: github.ref == 'refs/heads/main'
+        run: |
+          if ! git diff --quiet -- data/eurostat.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/eurostat.json
+            git commit -m "data: mise à jour Eurostat ($(date -u +%Y-%m-%d))"
+            git push
+          else
+            echo "Aucune donnée modifiée."
+          fi
+
+      - name: Construire le site
+        run: npm run build
+        env:
+          # Définir la variable de dépôt SITE_URL en cas de domaine personnalisé
+          SITE_URL: ${{ vars.SITE_URL }}
+
+      - name: Tests (données, liens, JSON-LD, SEO)
+        run: npm test
+
+      - name: Valider le HTML
+        run: npx html-validate "_site/**/*.html"
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
