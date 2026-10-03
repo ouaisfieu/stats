@@ -1,0 +1,43 @@
+---
+layout: layouts/base.njk
+permalink: /sources-et-methodologie/
+title: "Sources et méthodologie"
+description: "D'où viennent les chiffres de La Belgique en chiffres ? Sources Eurostat et Statbel, mise à jour automatique, définitions harmonisées et limites des comparaisons."
+breadcrumbs:
+  - name: "Sources et méthodologie"
+    url: "/sources-et-methodologie/"
+---
+<header class="page-head">
+  <h1>Sources et méthodologie</h1>
+  <p class="lead">Tous les chiffres du site proviennent de sources statistiques officielles. Aucun n'est saisi ni modifié à la main.</p>
+</header>
+<div class="prose">
+<h2>Pourquoi Eurostat ?</h2>
+<p>Les statistiques belges sont produites par <a href="https://statbel.fgov.be/fr">Statbel</a> (Direction générale Statistique du SPF Économie), la <a href="https://www.nbb.be/fr">Banque nationale de Belgique</a> (comptes nationaux, finances publiques), le Bureau fédéral du Plan et les institutions régionales (IBSA, Statistiek Vlaanderen, IWEPS). Ces organismes transmettent leurs données à <a href="https://ec.europa.eu/eurostat">Eurostat</a>, l'office statistique de l'Union européenne, qui les publie selon des définitions communes à tous les États membres.</p>
+<p>Passer par Eurostat offre trois avantages : une <strong>interface de programmation unique</strong> et stable, des <strong>définitions harmonisées</strong> qui permettent la comparaison avec la moyenne européenne, et des <strong>métadonnées</strong> documentées pour chaque série.</p>
+
+<h2>Mise à jour automatique</h2>
+<p>Chaque semaine, un processus automatisé (GitHub Actions) interroge l'<a href="https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction">API Statistics d'Eurostat</a> au format JSON-stat pour chacune des {{ model | seriesCount }} séries du catalogue, enregistre les valeurs dans le dépôt de code (ce qui conserve l'historique des révisions), puis reconstruit et republie le site. Si Eurostat est indisponible, les dernières valeurs connues sont conservées.</p>
+<p>Les textes de synthèse (« En 2025, … ») sont générés automatiquement à partir des données : ils restent donc toujours cohérents avec les chiffres affichés.</p>
+
+<h2>Précautions de lecture</h2>
+<ul>
+  <li><strong>Révisions.</strong> Les données récentes sont souvent provisoires et peuvent être révisées, parfois de plusieurs dixièmes de point (PIB, finances publiques).</li>
+  <li><strong>Ruptures de série.</strong> Certaines enquêtes (forces de travail, EU-SILC) ont changé de méthode : c'est pourquoi certaines séries ne commencent qu'en 2009 ou 2015.</li>
+  <li><strong>Définitions européennes.</strong> Le chômage est mesuré au sens du BIT par enquête, et non à partir des demandeurs d'emploi inscrits (Actiris, Forem, VDAB). L'inflation suit l'IPCH, et non l'indice national des prix à la consommation utilisé pour l'indexation.</li>
+  <li><strong>Années.</strong> Les données de population sont mesurées au 1er janvier. Pour l'enquête EU-SILC (pauvreté, revenus), l'année est celle de l'enquête ; les revenus portent sur l'année précédente.</li>
+  <li><strong>Moyenne européenne.</strong> « UE » désigne l'Union à 27 États membres (composition depuis 2020), y compris pour les années antérieures.</li>
+</ul>
+
+<h2>Jeux de données utilisés</h2>
+<ul>
+{%- for d in model | uniqueDatasets %}
+  <li><a href="{{ d.url }}"><code>{{ d.code }}</code></a> — {{ d.title }}</li>{% endfor %}
+</ul>
+
+<h2>Données institutionnelles</h2>
+<p>Les informations sur les institutions et les élections (page <a href="/institutions-belges/">Institutions et élections</a>) ne proviennent pas d'Eurostat. Elles ont été relevées manuellement à partir des sources officielles citées sur la page et sont datées.</p>
+
+<h2>Signaler une erreur</h2>
+<p>Une incohérence, une série à ajouter ? Ouvrez un ticket sur <a href="{{ site.repo }}/issues">le dépôt GitHub du projet</a>.</p>
+</div>

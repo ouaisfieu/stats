@@ -1,0 +1,24 @@
+---
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="fr-BE">
+  <title>{{ site.title }} — mises à jour des données</title>
+  <subtitle>{{ site.description }}</subtitle>
+  <link href="{{ '/feed.xml' | abs }}" rel="self"/>
+  <link href="{{ '/' | abs }}"/>
+  <id>{{ '/' | abs }}</id>
+  <updated>{{ model.lastUpdate | isoDate }}T00:00:00Z</updated>
+  <author><name>{{ site.author.name }}</name><uri>{{ site.author.url }}</uri></author>
+  {%- for ind in model.indicators | sort(true, false, "updated") %}
+  <entry>
+    <title>{{ ind.title }} : données {{ ind.lastYear }}</title>
+    <link href="{{ ind.url | abs }}"/>
+    <id>{{ ind.url | abs }}#{{ ind.updated | isoDate }}</id>
+    <updated>{{ ind.updated | isoDate }}T00:00:00Z</updated>
+    <category term="{{ ind.themeTitle }}"/>
+    <summary>{{ ind.summary }}</summary>
+  </entry>
+  {%- endfor %}
+</feed>

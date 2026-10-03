@@ -1,0 +1,9 @@
+---
+pagination:
+  data: model.indicators
+  size: 1
+  alias: ind
+permalink: "/donnees/{{ ind.slug }}.json"
+eleventyExcludeFromCollections: true
+---
+{{ ind | toJson | safe }}

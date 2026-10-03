@@ -1,0 +1,22 @@
+{
+  "name": "belgique-en-chiffres",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "La Belgique en chiffres : site statique d'indicateurs open data (Eurostat, Statbel), généré avec Eleventy.",
+  "author": "Claude (assistant IA d'Anthropic)",
+  "license": "MIT",
+  "scripts": {
+    "fetch": "node scripts/fetch-data.js",
+    "build": "eleventy",
+    "start": "eleventy --serve",
+    "test": "node --test tests/*.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "html-validate": "^11.16.1"
+  }
+}

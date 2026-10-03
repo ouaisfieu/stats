@@ -1,0 +1,87 @@
+---
+layout: layouts/base.njk
+permalink: /institutions-belges/
+title: "Institutions belges et élections de 2024 en chiffres"
+description: "La Belgique fédérale en chiffres : 3 régions, 3 communautés, 10 provinces, 565 communes, 7 parlements. Résultats et sièges des élections fédérales du 9 juin 2024."
+theme: institutions
+breadcrumbs:
+  - name: "Politique & institutions"
+    url: "/themes/institutions/"
+  - name: "Institutions et élections"
+    url: "/institutions-belges/"
+---
+{%- set e = institutions.election %}
+{%- set gov = institutions.government %}
+<header class="page-head">
+  <p class="eyebrow"><a href="/themes/institutions/">Politique &amp; institutions</a></p>
+  <h1>Institutions belges et élections de 2024</h1>
+  <p class="lead">La Belgique est un État fédéral depuis 1993. Le pouvoir y est partagé entre l'autorité fédérale, trois régions (compétentes pour le territoire) et trois communautés (compétentes pour les personnes : enseignement, culture, langue).</p>
+</header>
+
+<section class="section" aria-labelledby="structure">
+  <h2 id="structure">Un pays, plusieurs niveaux de pouvoir</h2>
+  <ul class="stat-tiles">
+    {%- for s in institutions.structure %}
+    <li><strong>{{ s.value }}</strong><span class="st-label">{{ s.label }}</span><span class="st-note">{{ s.note }}</span></li>
+    {%- endfor %}
+  </ul>
+</section>
+
+<section class="section" aria-labelledby="parlements">
+  <h2 id="parlements">Sept assemblées parlementaires</h2>
+  <div class="table-scroll" role="region" tabindex="0" aria-label="Parlements belges">
+  <table>
+    <caption>Nombre de sièges par assemblée</caption>
+    <thead><tr><th scope="col">Assemblée</th><th scope="col">Niveau</th><th scope="col" class="n">Sièges</th></tr></thead>
+    <tbody>{% for p in institutions.parliaments %}<tr><th scope="row">{{ p.name }}</th><td>{{ p.level }}</td><td class="n">{{ p.seats }}</td></tr>{% endfor %}</tbody>
+  </table>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="elections">
+  <h2 id="elections">Élections fédérales du 9 juin 2024</h2>
+  <p>Les {{ e.seats }} sièges de la {{ e.chamber }} ont été renouvelés le <time datetime="{{ e.date }}">9 juin 2024</time>. Le vote est obligatoire ; la participation a atteint {{ e.turnout | num(2) }} %. La majorité absolue est de {{ e.majority }} sièges.</p>
+  <figure class="chart-figure">
+    <ul class="legend" aria-label="Légende"><li><span class="key c-s1" aria-hidden="true"></span>Parti membre du gouvernement</li><li><span class="key c-muted" aria-hidden="true"></span>Opposition</li></ul>
+    <div class="seats" role="list" aria-label="Sièges par parti">
+      {%- for r in e.results %}
+      <div class="seat-row" role="listitem">
+        <span class="seat-party">{{ r.party }}{% if r.gov %} <span class="tag">gouv.</span>{% endif %}</span>
+        <span class="seat-bar-wrap"><span class="seat-bar {{ 'gov' if r.gov else 'opp' }}" style="--w: {{ (r.seats / 24 * 100) | round(1) }}%"></span></span>
+        <span class="seat-val"><strong>{{ r.seats }}</strong> siège{{ "s" if r.seats > 1 }} · {{ r.votes | num(2) }} %</span>
+      </div>
+      {%- endfor %}
+    </div>
+    <figcaption class="small muted">Sièges à la Chambre et pourcentage des voix au niveau national. Source : SPF Intérieur, résultats officiels.</figcaption>
+  </figure>
+</section>
+
+<section class="section" aria-labelledby="gouvernement">
+  <h2 id="gouvernement">Le gouvernement fédéral</h2>
+  {%- set govSeats = e.results | selectattr("gov") | sum("seats") %}
+  <p>Le <strong>{{ gov.name }}</strong>, dirigé par {{ gov.pm }}, est en fonction depuis le <time datetime="{{ gov.since }}">3 février 2025</time>. La coalition, surnommée « Arizona », réunit {{ gov.coalition | join(", ") }}, soit <strong>{{ govSeats }} sièges sur {{ e.seats }}</strong> à la Chambre.</p>
+  <p class="small muted">Informations vérifiées le <time datetime="{{ institutions.checked }}">{{ institutions.checked | dateFr }}</time>.</p>
+</section>
+
+<section class="section" aria-labelledby="sources-inst">
+  <h2 id="sources-inst">Sources</h2>
+  <ul>{% for s in institutions.sources %}<li><a href="{{ s.url }}">{{ s.name }}</a></li>{% endfor %}</ul>
+  <p>Pour les finances publiques, voir <a href="/indicateurs/dette-publique/">la dette publique</a>, <a href="/indicateurs/deficit-public/">le solde budgétaire</a> et <a href="/indicateurs/depenses-publiques-par-fonction/">les dépenses par fonction</a>.</p>
+</section>
+
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "/institutions-belges/" | abs,
+  "url": "/institutions-belges/" | abs,
+  "name": title,
+  "description": description,
+  "inLanguage": "fr-BE",
+  "isPartOf": { "@id": site.url + "/#website" },
+  "author": { "@id": site.url + "/#author" },
+  "dateModified": institutions.checked,
+  "about": [
+    { "@type": "Country", "name": "Belgique", "sameAs": "https://www.wikidata.org/wiki/Q31" },
+    { "@type": "Event", "name": "Élections législatives fédérales belges de 2024", "startDate": e.date, "location": { "@type": "Country", "name": "Belgique" }, "eventStatus": "https://schema.org/EventScheduled", "sameAs": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_f%C3%A9d%C3%A9rales_belges_de_2024" }
+  ]
+} | jsonld | safe }}</script>

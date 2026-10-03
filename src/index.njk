@@ -1,0 +1,74 @@
+---
+layout: layouts/base.njk
+isHome: true
+bodyClass: home
+description: "Les chiffres clés de la Belgique — population, économie, emploi, pauvreté, climat, dette publique — expliqués simplement et mis à jour automatiquement à partir des données ouvertes d'Eurostat."
+---
+{%- set pop = model.indicators | find("slug", "population") %}
+<section class="hero" aria-labelledby="h1">
+  <div class="hero-text">
+    <p class="eyebrow">Statistiques ouvertes · mises à jour chaque semaine</p>
+    <h1 id="h1">La Belgique <span>en chiffres</span></h1>
+    <p class="lead">{{ model.indicators.length }} indicateurs pour comprendre le pays : démographie, économie, conditions de vie et finances publiques. Chaque chiffre est sourcé, comparé à la moyenne européenne quand c'est possible, et téléchargeable librement.</p>
+    <p class="hero-actions"><a class="btn" href="/indicateurs/">Parcourir les indicateurs</a> <a class="btn ghost" href="/donnees/">Télécharger les données</a></p>
+  </div>
+  {%- if pop.headline %}
+  <figure class="hero-figure">
+    <figcaption>Habitants au 1er janvier {{ pop.headline.year }}</figcaption>
+    <p class="hero-number"><data value="{{ pop.headline.value }}">{{ pop.headline.value | num }}</data></p>
+    <p class="muted small"><a href="{{ pop.url }}">Évolution depuis {{ pop.firstYear }} →</a></p>
+  </figure>
+  {%- endif %}
+</section>
+
+<section aria-labelledby="cles" class="section">
+  <div class="section-head">
+    <h2 id="cles">Chiffres clés</h2>
+    <p class="muted">Dernière valeur disponible pour chaque indicateur.</p>
+  </div>
+  <div class="cards">
+    {%- for ind in model.indicators | featured %}{% include "partials/card.njk" %}{% endfor %}
+  </div>
+</section>
+
+<section aria-labelledby="themes" class="section">
+  <div class="section-head"><h2 id="themes">Explorer par thème</h2></div>
+  <div class="theme-grid">
+    {%- for t in model.themes %}
+    <article class="theme-block" aria-labelledby="t-{{ t.slug }}">
+      <h3 id="t-{{ t.slug }}"><a href="{{ t.url }}">{{ t.title }}</a></h3>
+      <p class="muted">{{ t.intro }}</p>
+      <ul class="link-list">
+        {%- for ind in t.indicators %}<li><a href="{{ ind.url }}">{{ ind.title }}</a></li>{% endfor %}
+        {%- if t.slug == "institutions" %}<li><a href="/institutions-belges/">Institutions et élections de 2024</a></li>{% endif %}
+      </ul>
+    </article>
+    {%- endfor %}
+  </div>
+</section>
+
+<section aria-labelledby="faq" class="section faq">
+  <div class="section-head"><h2 id="faq">Questions fréquentes</h2></div>
+  {%- set faqItems = ["population", "esperance-de-vie", "taux-de-chomage", "inflation", "dette-publique", "risque-de-pauvrete"] %}
+  {%- for slug in faqItems %}{% set ind = model.indicators | find("slug", slug) %}
+  <details>
+    <summary>{{ ind.question }}</summary>
+    <p>{{ ind.summary }} <a href="{{ ind.url }}">En savoir plus</a></p>
+  </details>
+  {%- endfor %}
+</section>
+
+<section aria-labelledby="ouvert" class="section open-data">
+  <h2 id="ouvert">Des données ouvertes, vérifiables et réutilisables</h2>
+  <div class="cols">
+    <p>Les séries proviennent de l'<a href="https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction">API publique d'Eurostat</a>, qui harmonise les statistiques transmises par <a href="https://statbel.fgov.be/fr">Statbel</a>, la Banque nationale et les autres institutions belges. Un robot les récupère chaque semaine et reconstruit le site : aucun chiffre n'est saisi à la main.</p>
+    <p>Chaque indicateur est téléchargeable en <abbr title="Comma-separated values">CSV</abbr> et en <abbr title="JavaScript Object Notation">JSON</abbr>, décrit en <a href="/catalogue.jsonld">DCAT-AP</a> et balisé en <a href="https://schema.org/Dataset">schema.org</a> pour être compris par les moteurs de recherche et les portails de données.</p>
+  </div>
+</section>
+
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": model.indicators | faqLd(faqItems)
+} | jsonld | safe }}</script>
+<script type="application/ld+json">{{ { url: "/", name: site.title, description: site.description, items: model.indicators } | collectionLd | jsonld | safe }}</script>

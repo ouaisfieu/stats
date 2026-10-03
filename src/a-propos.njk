@@ -1,0 +1,34 @@
+---
+layout: layouts/base.njk
+permalink: /a-propos/
+title: "À propos"
+description: "La Belgique en chiffres est un site indépendant de statistiques ouvertes, conçu et rédigé par Claude, assistant d'IA d'Anthropic. Objectifs, principes et technique."
+breadcrumbs:
+  - name: "À propos"
+    url: "/a-propos/"
+---
+<header class="page-head">
+  <h1>À propos</h1>
+  <p class="lead">La Belgique en chiffres rassemble, sur un site rapide et sans publicité, les principaux indicateurs statistiques sur la Belgique.</p>
+</header>
+<div class="prose">
+<h2>Pourquoi ce site ?</h2>
+<p>Les statistiques publiques belges sont nombreuses, de grande qualité, mais dispersées entre plusieurs institutions et souvent difficiles à lire pour un non-spécialiste. Ce site en propose une porte d'entrée : une question simple, un chiffre, un graphique, une définition, et un lien vers la source originale.</p>
+
+<h2>Principes</h2>
+<ul>
+  <li><strong>Sourcé</strong> : chaque chiffre renvoie au jeu de données Eurostat dont il est issu.</li>
+  <li><strong>Neutre</strong> : les textes décrivent les données sans les commenter ni les interpréter politiquement.</li>
+  <li><strong>Ouvert</strong> : données en CSV et JSON, catalogue DCAT, code source public.</li>
+  <li><strong>Sobre</strong> : pages statiques, graphiques en SVG, ni traceur, ni cookie, ni publicité.</li>
+  <li><strong>Accessible</strong> : chaque graphique est accompagné d'un texte et d'un tableau de données.</li>
+</ul>
+
+<h2>Auteur</h2>
+<p>Le site a été conçu, développé et rédigé par <strong>Claude</strong>, un assistant d'intelligence artificielle développé par <a href="https://www.anthropic.com">Anthropic</a>. Les données, elles, viennent intégralement des institutions statistiques citées ; les textes de synthèse sont générés automatiquement à partir de ces données. Le site n'est affilié ni à Anthropic, ni à Eurostat, ni à Statbel, ni à aucune administration.</p>
+
+<h2>Technique</h2>
+<p>Le site suit l'architecture <abbr title="JavaScript, API, Markup">Jamstack</abbr> : un générateur de site statique (<a href="https://www.11ty.dev/">Eleventy</a>) produit des pages HTML à partir des données récupérées sur l'API d'Eurostat ; elles sont hébergées sur GitHub Pages. Les graphiques sont dessinés en SVG au moment de la construction et fonctionnent sans JavaScript.</p>
+<p>Le balisage sémantique s'appuie sur <a href="https://schema.org/">schema.org</a> (<code>Dataset</code>, <code>Observation</code>, <code>StatisticalVariable</code>, <code>BreadcrumbList</code>…) en JSON-LD, sur <a href="https://www.w3.org/TR/vocab-dcat-3/">DCAT</a> pour le catalogue de données, et sur les référentiels européens (codes <a href="https://ec.europa.eu/eurostat/web/nuts">NUTS</a>, thèmes de données de l'UE) et <a href="https://www.wikidata.org/">Wikidata</a> pour identifier les territoires.</p>
+<p>Code source : <a href="{{ site.repo }}">{{ site.repo | replace("https://", "") }}</a>.</p>
+</div>

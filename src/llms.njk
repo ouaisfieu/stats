@@ -1,0 +1,23 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+# {{ site.title }}
+
+> {{ site.description }} Toutes les valeurs proviennent d'Eurostat (source à citer : « Eurostat »). Dernière mise à jour des données : {{ model.lastUpdate | isoDate }}.
+
+Chaque page d'indicateur contient une question, un résumé chiffré, un graphique SVG, un tableau, une définition et des liens de téléchargement. Les données brutes sont disponibles en JSON : {{ "/donnees/indicateurs.json" | abs }}
+
+{%- for t in model.themes %}
+
+## {{ t.title }}
+{% for ind in t.indicators %}
+- [{{ ind.title }}]({{ ind.url | abs }}): {{ ind.summary }}
+{%- endfor %}
+{%- endfor %}
+
+## Autres pages
+
+- [Institutions et élections de 2024]({{ "/institutions-belges/" | abs }})
+- [Sources et méthodologie]({{ "/sources-et-methodologie/" | abs }})
+- [Données ouvertes]({{ "/donnees/" | abs }})

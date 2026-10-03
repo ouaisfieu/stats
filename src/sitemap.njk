@@ -1,0 +1,15 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for p in collections.all %}{% if not p.data.noindex and p.url and p.url.endsWith("/") %}
+  <url>
+    <loc>{{ p.url | abs }}</loc>
+    <lastmod>{{ (p.data.modified or model.lastUpdate) | isoDate }}</lastmod>
+    <changefreq>{{ "weekly" if p.url == "/" or p.url.startsWith("/indicateurs/") else "monthly" }}</changefreq>
+    <priority>{{ "1.0" if p.url == "/" else ("0.8" if p.url.startsWith("/indicateurs/") or p.url.startsWith("/themes/") else "0.5") }}</priority>
+  </url>
+{%- endif %}{% endfor %}
+</urlset>

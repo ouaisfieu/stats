@@ -1,0 +1,51 @@
+---js
+{
+  layout: "layouts/base.njk",
+  pagination: { data: "model.themes", size: 1, alias: "t", addAllPagesToCollections: true },
+  permalink: (data) => data.t.url,
+  eleventyComputed: {
+    title: (data) => `${data.t.title} : les chiffres de la Belgique`,
+    description: (data) => data.t.intro,
+    theme: (data) => data.t.slug,
+    breadcrumbs: (data) => [{ name: data.t.title, url: data.t.url }],
+  },
+}
+---
+<header class="page-head">
+  <p class="eyebrow">Thème</p>
+  <h1>{{ t.title }}</h1>
+  <p class="lead">{{ t.intro }}</p>
+  <nav class="toc" aria-label="Indicateurs de ce thème">
+    <ul>{% for ind in t.indicators %}<li><a href="#{{ ind.slug }}">{{ ind.title }}</a></li>{% endfor %}</ul>
+  </nav>
+</header>
+
+{%- if t.slug == "institutions" %}
+<aside class="callout">
+  <h2>Comment la Belgique est-elle organisée ?</h2>
+  <ul class="stat-row">
+    {%- for s in institutions.structure %}<li><strong>{{ s.value }}</strong> {{ s.label | lower }}</li>{% endfor %}
+  </ul>
+  <p><a href="/institutions-belges/">Institutions, parlements et résultats des élections de 2024 →</a></p>
+</aside>
+{%- endif %}
+
+<div class="theme-list">
+{%- for ind in t.indicators %}
+<section class="indicator-block" id="{{ ind.slug }}" aria-labelledby="h-{{ ind.slug }}">
+  <div class="ib-text">
+    <h2 id="h-{{ ind.slug }}"><a href="{{ ind.url }}">{{ ind.title }}</a></h2>
+    <p class="muted">{{ ind.question }}</p>
+    <p>{{ ind.summary }}</p>
+    <p class="small"><a href="{{ ind.url }}">Graphique détaillé, définition et données →</a></p>
+  </div>
+  <figure class="ib-chart">
+    {%- if ind.series.length > 1 and ind.chart != "hbar" %}{% include "partials/legend.njk" %}{% endif %}
+    {% chart ind, true %}
+    <figcaption class="small muted">{{ ind.unit | ucfirst }} · Source : Eurostat</figcaption>
+  </figure>
+</section>
+{%- endfor %}
+</div>
+
+<script type="application/ld+json">{{ { url: t.url, name: t.title, description: t.intro, items: t.indicators } | collectionLd | jsonld | safe }}</script>

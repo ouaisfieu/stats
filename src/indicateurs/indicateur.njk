@@ -1,0 +1,103 @@
+---js
+{
+  layout: "layouts/base.njk",
+  ogType: "article",
+  pagination: { data: "model.indicators", size: 1, alias: "ind", addAllPagesToCollections: true },
+  permalink: (data) => data.ind.url,
+  eleventyComputed: {
+    title: (data) => `${data.ind.title} en Belgique (${data.ind.firstYear}-${data.ind.lastYear})`,
+    description: (data) => data.ind.metaDescription,
+    theme: (data) => data.ind.theme,
+    modified: (data) => (data.ind.updated || "").slice(0, 10),
+    breadcrumbs: (data) => [
+      { name: data.ind.themeTitle, url: `/themes/${data.ind.theme}/` },
+      { name: data.ind.title, url: data.ind.url },
+    ],
+  },
+}
+---
+<article class="indicator" aria-labelledby="h1">
+<header class="page-head">
+  <p class="eyebrow"><a href="/themes/{{ ind.theme }}/">{{ ind.themeTitle }}</a></p>
+  <h1 id="h1">{{ ind.title }} <span class="h1-sub">en Belgique</span></h1>
+  <p class="question">{{ ind.question }}</p>
+</header>
+
+<div class="kpi-row">
+  {%- if ind.chart == "hbar" %}
+    {%- for r in ind.rows | batch(3) | first %}
+  <div class="kpi"><p class="kpi-label">{{ r.label }}</p><p class="kpi-value"><data value="{{ r.value }}">{{ r.value | compact(ind.decimals, ind.unitShort) }}</data>{% if ind.unitShort == "%" %}<span class="u"> %</span>{% endif %}</p><p class="kpi-sub">{{ "au 1er janvier " if ind.pointInTime else "" }}{{ r.year }}{% if r.growth != null %} · {{ r.growth | signed(1) }} % depuis {{ ind.growthSince }}{% endif %}</p></div>
+    {%- endfor %}
+  {%- else %}
+    {%- for s in ind.series %}{% if s.latest %}
+      {%- set prev = s.obs[s.obs.length - 2] %}
+  <div class="kpi"><p class="kpi-label"><span class="key c-{{ s.slot }}" aria-hidden="true"></span>{{ s.label }}</p><p class="kpi-value"><data value="{{ s.latest.value }}">{{ s.latest.value | compact(ind.decimals, ind.unitShort) }}</data>{% if ind.unitShort and ind.unitShort != "M€" %}<span class="u">{{ ind | unitSuffix }}</span>{% endif %}</p><p class="kpi-sub">{{ "au 1er janvier " if ind.pointInTime else "en " }}{{ s.latest.year }}{% if prev and prev.year == s.latest.year - 1 and not ind.signed and ind.unitShort != "%" and ind.delta != "abs" %} · {{ ((s.latest.value / prev.value - 1) * 100) | signed(1) }} % sur un an{% elif prev and prev.year == s.latest.year - 1 %} · {{ (s.latest.value - prev.value) | signed(ind.decimals) }}{{ " pt" if ind.unitShort == "%" else "" }} sur un an{% endif %}</p></div>
+    {%- endif %}{% endfor %}
+  {%- endif %}
+</div>
+
+<p class="lead">{{ ind.summary }}</p>
+
+<figure class="chart-figure" aria-labelledby="cap-{{ ind.slug }}">
+  {%- if ind.series.length > 1 and ind.chart != "hbar" %}{% include "partials/legend.njk" %}{% endif %}
+  {% chart ind %}
+  <figcaption id="cap-{{ ind.slug }}"><strong>{{ ind.title }}</strong>, {{ ind.unit }}{% if ind.chart == "hbar" %}, {{ ind.rows[0].year }}{% else %}, {{ ind.firstYear }}–{{ ind.lastYear }}{% endif %}. Source : Eurostat ({% for d in ind.datasets %}<a href="{{ d.url }}"><code>{{ d.code }}</code></a>{% if not loop.last %}, {% endif %}{% endfor %}).</figcaption>
+</figure>
+
+<details class="data-table">
+  <summary>Afficher les données sous forme de tableau</summary>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Tableau des données : {{ ind.title }}">
+  {%- if ind.chart == "hbar" %}
+  <table>
+    <caption>{{ ind.title }} ({{ ind.unit }}), {{ ind.rows[0].year }}</caption>
+    <thead><tr><th scope="col">{{ "Province" if ind.slug == "population-provinces" else "Fonction" }}</th><th scope="col" class="n">{{ ind.rows[0].year }}</th>{% if ind.growthSince %}<th scope="col" class="n">Évolution depuis {{ ind.growthSince }}</th>{% endif %}</tr></thead>
+    <tbody>{% for r in ind.rows %}<tr><th scope="row">{{ r.label }}</th><td class="n"><data value="{{ r.value }}">{{ r.value | num(ind.decimals) }}</data></td>{% if ind.growthSince %}<td class="n">{{ r.growth | signed(1) }} %</td>{% endif %}</tr>{% endfor %}</tbody>
+  </table>
+  {%- else %}
+  <table>
+    <caption>{{ ind.title }} ({{ ind.unit }})</caption>
+    <thead><tr><th scope="col">Année</th>{% for s in ind.series %}<th scope="col" class="n">{{ s.label }}</th>{% endfor %}</tr></thead>
+    <tbody>
+    {%- for y in ind.years | reverseCopy %}
+      <tr><th scope="row"><time datetime="{{ y }}">{{ y }}</time></th>{% for s in ind.series %}{% set v = s | valueAt(y) %}<td class="n">{% if v != null %}<data value="{{ v }}">{{ v | num(ind.decimals) }}</data>{% else %}<abbr title="non disponible">–</abbr>{% endif %}</td>{% endfor %}</tr>
+    {%- endfor %}
+    </tbody>
+  </table>
+  {%- endif %}
+  </div>
+</details>
+
+<div class="two-col">
+  <section aria-labelledby="def">
+    <h2 id="def">Définition</h2>
+    <p>{{ ind.definition }}</p>
+    <dl class="meta">
+      <dt>Unité</dt><dd>{{ ind.unit | ucfirst }}</dd>
+      <dt>Couverture</dt><dd>{{ ind.firstYear }}–{{ ind.lastYear }}, données annuelles</dd>
+      <dt>Territoire</dt><dd>{% for s in ind.series %}{{ s.label if (ind.chart != "hbar" and s.geo != "BE") or ind.slug == "population-provinces" else "Belgique" }}{% if not loop.last %}, {% endif %}{% endfor %}</dd>
+    </dl>
+  </section>
+  <section aria-labelledby="src">
+    <h2 id="src">Source et téléchargement</h2>
+    <dl class="meta">
+      <dt>Producteur</dt><dd><a href="https://ec.europa.eu/eurostat">Eurostat</a>, à partir des données transmises par les autorités statistiques belges</dd>
+      <dt>Jeu{{ "x" if ind.datasets.length > 1 }} de données</dt><dd>{% for d in ind.datasets %}<a href="{{ d.url }}"><code>{{ d.code }}</code></a> — {{ d.title }}{% if not loop.last %}<br>{% endif %}{% endfor %}</dd>
+      {%- if ind.updated %}<dt>Mise à jour Eurostat</dt><dd><time datetime="{{ ind.updated | isoDate }}">{{ ind.updated | dateFr }}</time></dd>{% endif %}
+    </dl>
+    <p class="downloads"><a class="btn small" href="/donnees/{{ ind.slug }}.csv" download>CSV</a> <a class="btn small ghost" href="/donnees/{{ ind.slug }}.json" download>JSON</a> <a class="small" href="{{ ind.series[0].apiUrl }}">Requête API Eurostat</a></p>
+  </section>
+</div>
+
+<section class="cite" aria-labelledby="citer">
+  <h2 id="citer">Citer cette page</h2>
+  <p class="small"><cite>{{ ind.title }} en Belgique</cite>, La Belgique en chiffres, d'après Eurostat ({% for d in ind.datasets %}{{ d.code }}{% if not loop.last %}, {% endif %}{% endfor %}){% if ind.updated %}, données mises à jour le {{ ind.updated | dateFr }}{% endif %}. <span class="url">{{ ind.url | abs }}</span></p>
+</section>
+
+{%- set related = model.indicators | byTheme(ind.theme) %}
+<nav class="related" aria-labelledby="voir-aussi">
+  <h2 id="voir-aussi">Dans le même thème</h2>
+  <ul class="pill-list">{% for r in related %}{% if r.slug != ind.slug %}<li><a href="{{ r.url }}">{{ r.title }}</a></li>{% endif %}{% endfor %}</ul>
+</nav>
+</article>
+
+<script type="application/ld+json">{{ ind | datasetLd | jsonld | safe }}</script>

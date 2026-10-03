@@ -1,0 +1,36 @@
+---
+layout: layouts/base.njk
+title: "Tous les indicateurs sur la Belgique"
+description: "Liste complète des indicateurs statistiques sur la Belgique : dernière valeur, année et lien vers le graphique et les données, classés par thème."
+breadcrumbs:
+  - name: "Indicateurs"
+    url: "/indicateurs/"
+---
+<header class="page-head">
+  <h1>Tous les indicateurs</h1>
+  <p class="lead">{{ model.indicators.length }} séries statistiques sur la Belgique, avec leur dernière valeur connue. Cliquez sur un indicateur pour voir son évolution, sa définition et télécharger les données.</p>
+</header>
+{%- for t in model.themes %}
+<section class="section" aria-labelledby="i-{{ t.slug }}">
+  <h2 id="i-{{ t.slug }}"><a href="{{ t.url }}">{{ t.title }}</a></h2>
+  <div class="table-scroll" role="region" tabindex="0" aria-label="Indicateurs : {{ t.title }}">
+  <table class="index-table">
+    <thead><tr><th scope="col">Indicateur</th><th scope="col" class="n">Dernière valeur</th><th scope="col" class="n">Année</th><th scope="col">Unité</th></tr></thead>
+    <tbody>
+    {%- for ind in t.indicators %}
+      <tr>
+        <th scope="row"><a href="{{ ind.url }}">{{ ind.title }}</a></th>
+        {%- if ind.chart == "hbar" %}
+        <td class="n">{{ ind.rows[0].label }} : {{ ind.rows[0].value | num(ind.decimals) }}</td><td class="n">{{ ind.rows[0].year }}</td>
+        {%- elif ind.headline %}
+        <td class="n"><data value="{{ ind.headline.value }}">{{ ind.headline.value | num(ind.decimals) }}</data>{% if ind.series.length > 1 %} <span class="muted small">({{ ind.series[0].label }})</span>{% endif %}</td><td class="n">{{ ind.headline.year }}</td>
+        {%- endif %}
+        <td>{{ ind.unit }}</td>
+      </tr>
+    {%- endfor %}
+    </tbody>
+  </table>
+  </div>
+</section>
+{%- endfor %}
+<script type="application/ld+json">{{ { url: "/indicateurs/", name: "Tous les indicateurs", description: "Liste complète des indicateurs statistiques sur la Belgique.", items: model.indicators } | collectionLd | jsonld | safe }}</script>

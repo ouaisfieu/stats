@@ -1,0 +1,5 @@
+---
+permalink: "/catalogue.jsonld"
+eleventyExcludeFromCollections: true
+---
+{{ model | dcatCatalog | json | safe }}

@@ -1,0 +1,14 @@
+{# Carte d'indicateur (accueil, thèmes). Variable attendue : ind #}
+<article class="card" aria-labelledby="card-{{ ind.slug }}">
+  <p class="card-theme">{{ ind.themeShort }}</p>
+  <h3 id="card-{{ ind.slug }}"><a href="{{ ind.url }}" class="stretched">{{ ind.title }}</a></h3>
+  {%- if ind.chart == "hbar" %}
+  <p class="card-value"><data value="{{ ind.rows[0].value }}">{{ ind.rows[0].label }}</data></p>
+  <p class="card-sub">en tête, {{ ind.rows[0].value | num(ind.decimals) }}{{ ind | unitSuffix }} ({{ ind.rows[0].year }})</p>
+  {%- elif ind.headline %}
+  <p class="card-value"><data value="{{ ind.headline.value }}">{{ ind.headline.value | compact(ind.decimals, ind.unitShort) }}{% if ind.unitShort and ind.unitShort != "M€" %}<span class="u">{{ ind | unitSuffix }}</span>{% endif %}</data></p>
+  {%- set subUnit = ind.unit if (not ind.unitShort or ind.unitShort == "%") else "" %}
+  <p class="card-sub">{% if subUnit %}{{ subUnit | ucfirst }} · {% endif %}{{ "au 1er janvier " if ind.pointInTime else "" }}{{ ind.headline.year }}</p>
+  {%- endif %}
+  {% sparkline ind %}
+</article>

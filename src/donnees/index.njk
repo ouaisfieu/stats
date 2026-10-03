@@ -1,0 +1,43 @@
+---
+layout: layouts/base.njk
+title: "Données ouvertes sur la Belgique : CSV, JSON et DCAT"
+description: "Téléchargez librement toutes les séries statistiques du site en CSV ou JSON, ainsi que le catalogue DCAT-AP et un fichier de synthèse. Source : Eurostat."
+breadcrumbs:
+  - name: "Données ouvertes"
+    url: "/donnees/"
+---
+<header class="page-head">
+  <h1>Données ouvertes</h1>
+  <p class="lead">Toutes les séries publiées ici sont librement téléchargeables. Elles sont reprises telles quelles de l'API d'Eurostat, sans retraitement autre que la mise en forme.</p>
+</header>
+
+<section class="section" aria-labelledby="global">
+  <h2 id="global">Fichiers globaux</h2>
+  <ul class="file-list">
+    <li><a href="/donnees/indicateurs.json"><code>indicateurs.json</code></a> — toutes les séries et métadonnées en un seul fichier JSON</li>
+    <li><a href="/donnees/dernieres-valeurs.csv"><code>dernieres-valeurs.csv</code></a> — dernière valeur de chaque série</li>
+    <li><a href="/catalogue.jsonld"><code>catalogue.jsonld</code></a> — catalogue <a href="https://semiceu.github.io/DCAT-AP/">DCAT-AP</a> (JSON-LD), moissonnable par les portails de données ouvertes</li>
+    <li><a href="/feed.xml"><code>feed.xml</code></a> — flux Atom des mises à jour</li>
+  </ul>
+</section>
+
+<section class="section" aria-labelledby="series">
+  <h2 id="series">Par indicateur</h2>
+  <div class="table-scroll" role="region" tabindex="0" aria-label="Fichiers par indicateur">
+  <table>
+    <thead><tr><th scope="col">Indicateur</th><th scope="col">Période</th><th scope="col">Mise à jour</th><th scope="col">Fichiers</th></tr></thead>
+    <tbody>
+    {%- for ind in model.indicators %}
+      <tr><th scope="row"><a href="{{ ind.url }}">{{ ind.title }}</a></th><td>{{ ind.firstYear }}–{{ ind.lastYear }}</td><td>{% if ind.updated %}<time datetime="{{ ind.updated | isoDate }}">{{ ind.updated | isoDate }}</time>{% endif %}</td><td><a href="/donnees/{{ ind.slug }}.csv">CSV</a> · <a href="/donnees/{{ ind.slug }}.json">JSON</a></td></tr>
+    {%- endfor %}
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="format">
+  <h2 id="format">Format des fichiers</h2>
+  <p>Les fichiers CSV sont encodés en UTF-8, séparés par des virgules, avec un point comme séparateur décimal. Colonnes : <code>indicateur</code>, <code>serie</code>, <code>libelle</code>, <code>annee</code>, <code>valeur</code>, <code>unite</code>, <code>source</code>.</p>
+  <p>Réutilisation libre, à condition de citer la source : « Eurostat ». Voir la <a href="{{ site.eurostatCopyright }}">politique de réutilisation d'Eurostat</a>.</p>
+</section>
+<script type="application/ld+json">{{ model | catalogLd | jsonld | safe }}</script>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="{{ site.lang }}" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{%- set pageTitle = (title + " — " + site.title) if title and not isHome else (site.title + " — " + site.tagline) %}
+{%- set pageDesc = description or site.description %}
+{%- set canonical = page.url | abs %}
+<title>{{ pageTitle }}</title>
+<meta name="description" content="{{ pageDesc }}">
+<link rel="canonical" href="{{ canonical }}">
+<link rel="alternate" hreflang="fr-BE" href="{{ canonical }}">
+<link rel="alternate" hreflang="x-default" href="{{ canonical }}">
+<meta name="author" content="{{ site.author.name }} ({{ site.author.description }})">
+<meta name="generator" content="{{ eleventy.generator }}">
+{%- if noindex %}<meta name="robots" content="noindex, follow">{% else %}<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">{% endif %}
+<meta name="theme-color" content="#fcfcfb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+{# Open Graph / réseaux sociaux #}
+<meta property="og:type" content="{{ ogType or 'website' }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:locale" content="{{ site.locale }}">
+<meta property="og:title" content="{{ title or site.title }}">
+<meta property="og:description" content="{{ pageDesc }}">
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:image" content="{{ '/og.png' | abs }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ site.title }} — statistiques ouvertes sur la Belgique">
+{%- if modified %}<meta property="article:modified_time" content="{{ modified }}">{% endif %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ title or site.title }}">
+<meta name="twitter:description" content="{{ pageDesc }}">
+<meta name="twitter:image" content="{{ '/og.png' | abs }}">
+{# Icônes, manifeste, flux, catalogue de données #}
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="alternate" type="application/atom+xml" title="{{ site.title }} — mises à jour des données" href="/feed.xml">
+<link rel="alternate" type="application/ld+json" title="Catalogue de données (DCAT)" href="/catalogue.jsonld">
+<link rel="author" href="/humans.txt">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script type="application/ld+json">{{ site | websiteLd | jsonld | safe }}</script>
+</head>
+<body class="{{ bodyClass }}">
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="site-header">
+  <div class="tricolore" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="wrap header-inner">
+    <a class="brand" href="/" {% if isHome %}aria-current="page"{% endif %}>
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="18" width="6" height="11" rx="1.5" fill="currentColor"/><rect x="13" y="11" width="6" height="18" rx="1.5" fill="#FDDA24"/><rect x="23" y="4" width="6" height="25" rx="1.5" fill="#EF3340"/></svg>
+      <span>La Belgique <em>en chiffres</em></span>
+    </a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <ul>
+        {%- for t in model.themes %}
+        <li><a href="{{ t.url }}" {% if page.url == t.url or theme == t.slug %}aria-current="{{ 'page' if page.url == t.url else 'true' }}"{% endif %}>{{ t.short }}</a></li>
+        {%- endfor %}
+        <li><a href="/donnees/" {% if page.url == '/donnees/' %}aria-current="page"{% endif %}>Données</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu" class="wrap" tabindex="-1">
+{%- if breadcrumbs %}{% include "partials/breadcrumbs.njk" %}{% endif %}
+{{ content | safe }}
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-brand">La Belgique <em>en chiffres</em></p>
+      <p>Statistiques publiques mises à jour automatiquement à partir des données ouvertes d'<a href="https://ec.europa.eu/eurostat">Eurostat</a>, qui compile notamment les chiffres de <a href="https://statbel.fgov.be/fr">Statbel</a>. Source à citer : Eurostat.</p>
+      <p class="muted small">Site indépendant, conçu et rédigé par Claude, assistant d'IA d'Anthropic. Il n'est affilié ni à Eurostat, ni à Statbel, ni à aucune administration.</p>
+    </div>
+    <nav aria-label="Pied de page">
+      <h2 class="footer-h">Thèmes</h2>
+      <ul>{% for t in model.themes %}<li><a href="{{ t.url }}">{{ t.title }}</a></li>{% endfor %}</ul>
+    </nav>
+    <nav aria-label="Ressources">
+      <h2 class="footer-h">Ressources</h2>
+      <ul>
+        <li><a href="/indicateurs/">Tous les indicateurs</a></li>
+        <li><a href="/institutions-belges/">Institutions et élections</a></li>
+        <li><a href="/donnees/">Données ouvertes (CSV, JSON)</a></li>
+        <li><a href="/sources-et-methodologie/">Sources et méthodologie</a></li>
+        <li><a href="/a-propos/">À propos</a></li>
+        <li><a href="{{ site.repo }}">Code source</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap small muted footer-meta">
+    <p>Dernière mise à jour des données : <time datetime="{{ model.lastUpdate | isoDate }}">{{ model.lastUpdate | dateFr }}</time> · Site généré le <time datetime="{{ site.buildDate | isoDate }}">{{ site.buildDate | dateFr }}</time></p>
+  </div>
+</footer>
+<script src="/assets/js/charts.js" defer></script>
+</body>
+</html>
