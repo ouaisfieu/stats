@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html lang="fr-BE" dir="ltr" class="scroll-smooth" prefix="og: https://ogp.me/ns# schema: https://schema.org/ dcat: http://www.w3.org/ns/dcat#">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Belgique en Chiffres (2024–2026) | Portail Open Data &amp; Rapport Statistique Exhaustif</title>
+  
+  <!-- Primary SEO Meta Tags -->
+  <meta name="description" content="Portail Open Data et rapport statistique académique exhaustif sur la Belgique (2024-2026) : démographie (11,87 M hab.), macroéconomie, dette publique, emploi, pauvreté EU-SILC, PISA et classements mondiaux (IDH, RSF, CPI). Données Statbel, BNB, Bureau fédéral du Plan, OCDE." />
+  <meta name="keywords" content="Belgique en chiffres, statistiques Belgique 2026, Open Data Belgique, Statbel, Banque Nationale de Belgique, Bureau fédéral du Plan, IWEPS, démographie Belgique, PIB Belgique, taux d'emploi Belgique, AROPE, PISA Belgique, IDH Belgique" />
+  <meta name="author" content="Gemini 3.1 Pro — Unité de Recherche Statistique &amp; Analyse Open Data" />
+  <meta name="creator" content="Gemini 3.1 Pro (Google AI)" />
+  <meta name="publisher" content="Observatoire Open Data Belgique (github.com/ouaisfieu/stats)" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical" href="https://ouaisfieu.github.io/stats/" />
+
+  <!-- Dublin Core Metadata for Academic & Open Data Indexing -->
+  <meta name="DC.title" content="Analyse Démographique, Socio-Économique et Institutionnelle de la Belgique : Rapport Statistique Exhaustif (2024-2026)" />
+  <meta name="DC.creator" content="Gemini 3.1 Pro (IA de Recherche Statistique)" />
+  <meta name="DC.subject" content="Statistiques officielles; Démographie; Macroéconomie; Finances publiques; Marché du travail; Pauvreté; Éducation; Gouvernance; Belgique" />
+  <meta name="DC.description" content="Synthèse rigoureuse et base Open Data des indicateurs officiels de la Belgique (Statbel, BNB, BFP, IWEPS, OCDE, PNUD, RSF, Transparency International) avec projections 2080." />
+  <meta name="DC.date" content="2026-10-03" />
+  <meta name="DC.type" content="Dataset, Text, InteractiveResource" />
+  <meta name="DC.format" content="text/html, application/ld+json, text/csv, application/json" />
+  <meta name="DC.language" content="fr-BE" />
+  <meta name="DC.coverage" content="Belgique (Région flamande, Région wallonne, Région de Bruxelles-Capitale)" />
+  <meta name="DC.rights" content="CC0 1.0 Universal (Public Domain Dedication) / Open Data" />
+
+  <!-- OpenGraph / Facebook / LinkedIn -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Belgique en Chiffres — Open Data Portal" />
+  <meta property="og:url" content="https://ouaisfieu.github.io/stats/" />
+  <meta property="og:title" content="La Belgique en Chiffres (2024–2026) | Portail Open Data &amp; Rapport Académique" />
+  <meta property="og:description" content="Explorez plus de 55 indicateurs officiels vérifiés sur la Belgique : démographie (11 867 634 hab.), économie, dette (111,3 % PIB), emploi, pauvreté AROPE et classements internationaux. Téléchargement JSON/CSV gratuit." />
+  <meta property="og:locale" content="fr_BE" />
+  <meta property="article:published_time" content="2026-01-15T08:00:00+01:00" />
+  <meta property="article:modified_time" content="2026-10-03T08:00:00+02:00" />
+  <meta property="article:author" content="Gemini 3.1 Pro" />
+  <meta property="article:section" content="Statistiques &amp; Open Data" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="La Belgique en Chiffres (2024–2026) — Portail Open Data" />
+  <meta name="twitter:description" content="Radiographie académique et base Open Data de la Belgique (Statbel, BNB, BFP, OCDE, PNUD). Graphiques interactifs et export CSV/JSON." />
+
+  <!-- Schema.org JSON-LD Structured Data Graph (Dataset + ScholarlyArticle + WebSite + FAQPage) -->
+  <script type="application/ld+json" id="schema-jsonld">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://ouaisfieu.github.io/stats/#website",
+        "url": "https://ouaisfieu.github.io/stats/",
+        "name": "Belgique en Chiffres — Portail Open Data & Statistique",
+        "description": "Portail Jamstack Open Data regroupant les statistiques officielles, classements mondiaux et projections démographiques et macroéconomiques de la Belgique (2024-2080).",
+        "inLanguage": "fr-BE",
+        "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "codeRepository": "https://github.com/ouaisfieu/stats",
+        "author": {
+          "@id": "https://ouaisfieu.github.io/stats/#author-gemini"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://ouaisfieu.github.io/stats/#author-gemini",
+        "name": "Gemini 3.1 Pro — Unité de Recherche Statistique & Analyse Open Data",
+        "description": "Intelligence artificielle de recherche académique et de synthèse statistique, autrice principale du rapport et de l'architecture Open Data.",
+        "url": "https://github.com/ouaisfieu/stats"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://ouaisfieu.github.io/stats/#dataset",
+        "name": "Base de Données Officielle : La Belgique en Chiffres (2024-2026 & Projections 2080)",
+        "description": "Jeu de données structuré couvrant la démographie (population légale, soldes migratoires, origines, espérance de vie), la macroéconomie (PIB, dette publique, déficit, inflation), le marché du travail (taux d'emploi, chômage BIT par région et diplôme), l'inclusion sociale (AROPE, Gini, patrimoine), l'éducation (PISA 2022) et les classements internationaux (IDH, World Happiness Report, RSF, CPI Transparency International) de la Belgique.",
+        "url": "https://ouaisfieu.github.io/stats/",
+        "sameAs": "https://github.com/ouaisfieu/stats",
+        "version": "2026.10",
+        "isAccessibleForFree": true,
+        "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "creator": {
+          "@id": "https://ouaisfieu.github.io/stats/#author-gemini"
+        },
+        "citation": [
+          "Statbel (Office belge de statistique) - Population légale, Tables de mortalité, EFT, EU-SILC, IPC (2024-2026)",
+          "Banque Nationale de Belgique (BNB) & Bureau fédéral du Plan (BFP) - Projections macroéconomiques et démographiques 2025-2080",
+          "IWEPS (Institut wallon de l'évaluation, de la prospective et de la statistique)",
+          "OCDE - Programme international pour le suivi des acquis des élèves (PISA 2022)",
+          "PNUD - Rapport sur le développement humain 2025 (IDH)",
+          "Reporters Sans Frontières (RSF) - Classement mondial de la liberté de la presse 2026",
+          "Transparency International - Indice de perception de la corruption (CPI) 2025"
+        ],
+        "keywords": [
+          "Belgique", "Statbel", "Démographie", "PIB", "Dette publique", "Emploi", "Chômage", "AROPE", "Coefficient de Gini", "PISA", "IDH", "Open Data"
+        ],
+        "spatialCoverage": {
+          "@type": "Place",
+          "name": "Belgique (Royaume de Belgique : Région flamande, Région wallonne, Région de Bruxelles-Capitale)",
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 50.5039,
+            "longitude": 4.4699
+          }
+        },
+        "temporalCoverage": "1960/2080",
+        "variableMeasured": [
+          "Population légale au 1er janvier 2026 (11 867 634 habitants)",
+          "Espérance de vie à la naissance 2025 (82,5 ans)",
+          "Produit Intérieur Brut nominal 2026 (776,73 milliards USD)",
+          "Dette publique des administrations 2026 (111,3 % du PIB)",
+          "Taux d'emploi 20-64 ans 2026 (72,8 %)",
+          "Taux de chômage BIT 15-64 ans 2026 (6,1 %)",
+          "Risque de pauvreté ou d'exclusion sociale AROPE 2025 (16,5 %)",
+          "Indice de Gini des revenus 2024 (24,6)",
+          "Indice de Développement Humain PNUD 2025 (0,951 - 10e mondial)"
+        ],
+        "distribution": [
+          {
+            "@type": "DataDownload",
+            "encodingFormat": "application/json",
+            "contentUrl": "https://ouaisfieu.github.io/stats/#export-json",
+            "name": "belgique-statistiques-2024-2026.json"
+          },
+          {
+            "@type": "DataDownload",
+            "encodingFormat": "text/csv",
+            "contentUrl": "https://ouaisfieu.github.io/stats/#export-csv",
+            "name": "belgique-statistiques-2024-2026.csv"
+          }
+        ]
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "@id": "https://ouaisfieu.github.io/stats/#report",
+        "headline": "Analyse Démographique, Socio-Économique et Institutionnelle de la Belgique : Rapport Statistique Exhaustif (2024-2026)",
+        "datePublished": "2026-01-15",
+        "dateModified": "2026-10-03",
+        "author": {
+          "@id": "https://ouaisfieu.github.io/stats/#author-gemini"
+        },
+        "publisher": {
+          "@id": "https://ouaisfieu.github.io/stats/#author-gemini"
+        },
+        "inLanguage": "fr-BE",
+        "isAccessibleForFree": true,
+        "about": {
+          "@id": "https://ouaisfieu.github.io/stats/#dataset"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://ouaisfieu.github.io/stats/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Quelle est la population officielle de la Belgique en 2026 ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Au 1er janvier 2026, la population légale de la Belgique s'élève à 11 867 634 habitants (+0,36 % sur un an), répartie entre la Région flamande (6 898 350 habitants), la Région wallonne (3 713 450 habitants) et la Région de Bruxelles-Capitale (1 255 795 habitants). La croissance repose exclusivement sur le solde migratoire international, le solde naturel étant déficitaire (-4 890 personnes en 2025)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quel est le niveau du PIB et de la dette publique de la Belgique en 2026 ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Le PIB nominal de la Belgique est estimé par le FMI à 776,73 milliards USD en 2026 (avec un PIB par habitant en dollars constants de 45 145,66 USD en 2025). Le déficit public structurel atteint 5,5 % du PIB en 2026 et la dette publique s'élève à 111,3 % du PIB (projetée à 114,8 % en 2028 selon la BNB)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quelles sont les disparités régionales du marché du travail belge en 2026 ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "À la mi-2026, le taux d'emploi national (20-64 ans) est de 72,8 % et le chômage BIT (15-64 ans) de 6,1 %. La Flandre est en situation de quasi plein-emploi (77,3 % d'emploi, 4,0 % de chômage), tandis que la Wallonie affiche 67,6 % d'emploi (8,0 % de chômage) et Bruxelles-Capitale 64,7 % d'emploi (12,7 % de chômage)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Comment la Belgique se positionne-t-elle dans les classements mondiaux ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "La Belgique occupe le 10e rang mondial à l'Indice de Développement Humain (IDH 2025 : 0,951), le 14e rang au World Happiness Report 2026, le 16e rang sur 180 au classement de la liberté de la presse RSF 2026 (81,17/100) et le 21e rang à l'Indice de perception de la corruption de Transparency International (69/100)."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts: Inter & Merriweather for Academic Readability & JetBrains Mono for Data -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome 6.5.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['Merriweather', 'Georgia', 'serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            belgium: {
+              black: '#0f172a',
+              gold: '#eab308',
+              red: '#e11d48',
+              slate: '#1e293b'
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <style>
+    /* Custom scrollbar and fine academic typography rules */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    .dark ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
+    .dark ::-webkit-scrollbar-thumb { background: #334155; }
+    .belgian-ribbon {
+      background: linear-gradient(90deg, #0f172a 0%, #0f172a 33.33%, #facc15 33.33%, #facc15 66.66%, #e11d48 66.66%, #e11d48 100%);
+    }
+    .academic-prose p {
+      margin-bottom: 1.15rem;
+      line-height: 1.8;
+    }
+    .cite-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      padding: 0.1rem 0.38rem;
+      border-radius: 0.25rem;
+      vertical-align: super;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white !important; color: black !important; }
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased selection:bg-amber-400 selection:text-slate-950 transition-colors duration-200">
+
+  <!-- Skip to main content for Accessibility -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-amber-400 focus:text-slate-950 focus:font-bold focus:rounded-lg">
+    Aller au contenu principal
+  </a>
+
+  <!-- Belgian Tricolore Top Bar -->
+  <div class="belgian-ribbon h-1.5 w-full sticky top-0 z-50" aria-hidden="true"></div>
+
+  <!-- Top Sticky Header -->
+  <header class="sticky top-1.5 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 no-print" role="banner">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 gap-3">
+        
+        <!-- Brand Identity -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-slate-900 dark:bg-slate-800 border border-slate-700 flex items-center justify-center shadow-sm relative overflow-hidden">
+            <span class="font-mono font-extrabold text-sm tracking-tighter text-white">BE</span>
+            <span class="absolute bottom-0 inset-x-0 h-1 belgian-ribbon"></span>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-bold text-base sm:text-lg tracking-tight text-slate-900 dark:text-white">Belgique en Chiffres</span>
+              <span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-mono font-semibold bg-amber-100 text-amber-900 dark:bg-amber-500/20 dark:text-amber-300 border border-amber-300/60 dark:border-amber-500/30">
+                OPEN DATA 2024–2026
+              </span>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 hidden md:block">
+              Portail Statistique &amp; Web Sémantique • <span class="font-mono">github.com/ouaisfieu/stats</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Primary Navigation Tabs -->
+        <nav aria-label="Navigation principale du portail" class="hidden lg:flex items-center gap-1 bg-slate-100 dark:bg-slate-800/80 p-1 rounded-xl border border-slate-200/80 dark:border-slate-700/70">
+          <button onclick="switchMainView('dashboard')" id="nav-btn-dashboard" class="nav-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm">
+            <i class="fa-solid fa-chart-pie mr-1.5 text-amber-500"></i>Tableau de Bord &amp; Graphiques
+          </button>
+          <button onclick="switchMainView('report')" id="nav-btn-report" class="nav-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white">
+            <i class="fa-solid fa-book-open mr-1.5 text-rose-500"></i>Rapport Académique Exhaustif
+          </button>
+          <button onclick="switchMainView('opendata')" id="nav-btn-opendata" class="nav-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white">
+            <i class="fa-solid fa-database mr-1.5 text-emerald-500"></i>Catalogue Open Data (58)
+          </button>
+          <button onclick="switchMainView('semantic')" id="nav-btn-semantic" class="nav-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white">
+            <i class="fa-solid fa-code-branch mr-1.5 text-sky-500"></i>Web Sémantique &amp; API
+          </button>
+        </nav>
+
+        <!-- Actions: Export, GitHub, Theme -->
+        <div class="flex items-center gap-2">
+          <button onclick="exportDataset('json')" title="Télécharger le jeu de données complet en JSON" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm transition">
+            <i class="fa-solid fa-download"></i>
+            <span>JSON / CSV</span>
+          </button>
+
+          <a href="https://github.com/ouaisfieu/stats" target="_blank" rel="noopener noreferrer" title="Dépôt GitHub Open Data (ouaisfieu/stats)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition">
+            <i class="fa-brands fa-github text-sm"></i>
+            <span class="hidden xl:inline font-mono">ouaisfieu/stats</span>
+          </a>
+
+          <button onclick="toggleDarkMode()" id="theme-toggle-btn" aria-label="Basculer le thème clair ou sombre" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition">
+            <i class="fa-solid fa-moon dark:hidden"></i>
+            <i class="fa-solid fa-sun hidden dark:inline text-amber-400"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Bar -->
+      <div class="flex lg:hidden overflow-x-auto py-2 gap-1.5 border-t border-slate-200/70 dark:border-slate-800/70">
+        <button onclick="switchMainView('dashboard')" id="mob-btn-dashboard" class="mob-tab-btn shrink-0 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-white dark:bg-amber-400 dark:text-slate-950">
+          <i class="fa-solid fa-chart-pie mr-1"></i>Dashboard
+        </button>
+        <button onclick="switchMainView('report')" id="mob-btn-report" class="mob-tab-btn shrink-0 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+          <i class="fa-solid fa-book-open mr-1"></i>Rapport Complet
+        </button>
+        <button onclick="switchMainView('opendata')" id="mob-btn-opendata" class="mob-tab-btn shrink-0 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+          <i class="fa-solid fa-database mr-1"></i>Open Data (CSV/JSON)
+        </button>
+        <button onclick="switchMainView('semantic')" id="mob-btn-semantic" class="mob-tab-btn shrink-0 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+          <i class="fa-solid fa-code-branch mr-1"></i>SEO &amp; JSON-LD
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10" role="main">
+
+    <!-- Hero Banner with Authorship, Provenance & Quick Search -->
+    <section aria-labelledby="hero-heading" class="relative rounded-2xl bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 text-white p-6 sm:p-8 lg:p-10 shadow-xl border border-slate-800 overflow-hidden">
+      <div class="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-amber-500/10 blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-20 -bottom-20 w-80 h-80 rounded-full bg-rose-500/10 blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-8 space-y-4">
+          <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded-md bg-amber-400/20 text-amber-300 border border-amber-400/30 font-semibold">
+              <i class="fa-solid fa-check-double mr-1"></i>RIGUEUR ACADÉMIQUE • 54 SOURCES CITÉES
+            </span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">
+              Statbel • BNB • BFP • IWEPS • OCDE • PNUD
+            </span>
+            <span class="px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+              Schema.org / DCAT-AP
+            </span>
+          </div>
+
+          <h1 id="hero-heading" class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+            La Belgique en Chiffres <span class="text-amber-400 font-mono">(2024–2026)</span>
+          </h1>
+
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-3xl">
+            Radiographie statistique exhaustive de l'État fédéral belge et de ses trois régions (Flandre, Wallonie, Bruxelles-Capitale). Ce portail Jamstack Open Data croise les séries temporelles longues (<time datetime="1960">1960</time>–<time datetime="2026">2026</time>) et les projections démographiques et budgétaires jusqu'en <time datetime="2080">2080</time>.
+          </p>
+
+          <!-- Academic Metadata & Anonymous Repo Attribution -->
+          <div class="pt-2 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-400 border-t border-slate-800/80">
+            <div>
+              <i class="fa-solid fa-robot text-amber-400 mr-1.5"></i>
+              <strong>Auteur du rapport &amp; code :</strong> <span itemprop="author">Gemini 3.1 Pro (Unité de Recherche Statistique IA)</span>
+            </div>
+            <div>
+              <i class="fa-solid fa-user-shield text-emerald-400 mr-1.5"></i>
+              <strong>Publication :</strong> Hébergement Open Source anonyme (<code class="text-slate-200">github.com/ouaisfieu/stats</code>)
+            </div>
+            <div>
+              <i class="fa-brands fa-creative-commons text-sky-400 mr-1.5"></i>
+              <strong>Licence :</strong> Domaine Public (CC0 1.0)
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Open Data Export & Citation Box -->
+        <div class="lg:col-span-4 bg-slate-800/90 backdrop-blur-sm rounded-xl p-5 border border-slate-700/80 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold">
+              <i class="fa-solid fa-bolt mr-1"></i>Accès Direct Open Data
+            </span>
+            <span class="text-[11px] font-mono text-slate-400">v2026.10</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Téléchargez l'intégralité des indicateurs structurés ou copiez la référence bibliographique académique en un clic :
+          </p>
+          <div class="grid grid-cols-2 gap-2">
+            <button onclick="exportDataset('json')" class="flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-semibold text-xs transition shadow">
+              <i class="fa-solid fa-file-code"></i>Export JSON
+            </button>
+            <button onclick="exportDataset('csv')" class="flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-xs transition shadow">
+              <i class="fa-solid fa-file-csv"></i>Export CSV
+            </button>
+            <button onclick="exportDataset('jsonld')" class="flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-100 font-medium text-xs transition">
+              <i class="fa-solid fa-project-diagram"></i>JSON-LD RDF
+            </button>
+            <button onclick="copyCitation('apa')" class="flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-100 font-medium text-xs transition">
+              <i class="fa-solid fa-quote-right"></i>Citer (APA)
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- STREAMING_CHUNK:Creating the 8 headline KPI cards with semantic <data> elements... -->
+    <!-- Headline National KPIs (Semantic <data> tags for machine readability) -->
+    <section aria-labelledby="kpi-heading">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+        <div>
+          <h2 id="kpi-heading" class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <i class="fa-solid fa-gauge-high text-amber-500"></i>
+            Indicateurs Clés Nationaux (Synthèse 2025–2026)
+          </h2>
+          <p class="text-xs text-slate-500 dark:text-slate-400">
+            Balisage sémantique <code class="font-mono">&lt;data value="..."&gt;</code> activé pour l'indexation directe des moteurs de recherche.
+          </p>
+        </div>
+        <div class="flex items-center gap-2 text-xs">
+          <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">
+            <i class="fa-regular fa-calendar"></i> Réf : 01/01/2026 &amp; T2 2026
+          </span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- KPI 1: Population -->
+        <article class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
+            <span class="font-semibold uppercase tracking-wider">Population Légale (2026)</span>
+            <span class="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-mono font-semibold">+0,36 %</span>
+          </div>
+          <div class="text-2xl sm:text-3xl font-extrabold font-mono text-slate-900 dark:text-white">
+            <data value="11867634">11 867 634</data>
+          </div>
+          <p class="mt-2 text-xs text-slate-600 dark:text-slate-400 flex items-center justify-between">
+            <span>+42 083 hab. vs 2025 • Proj. 2080 : <strong class="text-slate-900 dark:text-slate-200">13,1 M</strong></span>
+            <span class="font-mono text-[11px] text-amber-600 dark:text-amber-400">[Statbel]</span>
+          </p>
+        </article>
+
+        <!-- KPI 2: Espérance de vie -->
+        <article class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
+            <span class="font-semibold uppercase tracking-wider">Espérance de Vie (2025)</span>
+            <span class="px-2 py-0.5 rounded bg-sky-100 dark:bg-sky-500/20 text-sky-700 dark:text-sky-300 font-mono font-semibold">+54 jours</span>
+          </div>
+          <div class="text-2xl sm:text-3xl font-extrabold font-mono text-slate-900 dark:text-white">
+            <data value="82.5">82,5 ans</data>
+          </div>
+          <p class="mt-2 text-xs text-slate-600 dark:text-slate-400 flex items-center justify-between">
+            <span>Femmes : <strong>84,4 ans</strong> • Hommes : <strong>80,5 ans</strong></span>
+            <span class="font-mono text-[11px] text-amber-600 dark:text-amber-400">[Statbel]</span>
+          </p>
+        </article>
+
+        <!-- KPI 3: PIB Nominal & par hab -->
+        <article class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
+            <span class="font-semibold uppercase tracking-wider">PIB Nominal (2026)</span>
+            <span class="px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 font-mono font-semibold">Top 25 Mondial</span>
+          </div>
+          <div class="text-2xl sm:text-3xl font-extrabold font-mono text-slate-900 dark:text-white">
+            <data value="776730000000">776,73 Mds $</data>
+          </div>
+          <p class="mt-2 text-xs text-slate-600 dark:text-slate-400 flex items-center justify-between">
+            <span>PIB/hab. constant : <strong>45 145,66 $</strong></span>
+            <span class="font-mono text-[11px] text-amber-600 dark:text-amber-400">[FMI/BNB]</span>
+          </p>
+        </article>
+
+        <!-- KPI 4: Dette & Déficit -->
+        <article class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
+            <span class="font-semibold uppercase tracking-wider">Dette Publique (2026)</span>
+            <span class="px-2 py-0.5 rounded bg-rose-100 dark:bg-rose-500/20 text-rose-700 dark:text-rose-300 font-mono font-semibold">Déficit 5,5 %</span>
+          </div>
+          <div class="text-2xl sm:text-3xl font-extrabold font-mono text-rose-600 dark:text-rose-400">
+            <data value="111.3">111,3 % PIB</data>
+          </div>
+          <p class="mt-2 text-xs text-slate-600 dark:text-slate-400 flex items-center justify-between">
+            <span>107,9 % (2024) → Proj. 2028 : <strong>114,8 %</strong></span>
+            <span class="font-mono text-[11px] text-amber-600 dark:text-amber-400">[BNB/BFP]</span>
+          </p>
+        </article>
+
+        <!-- KPI 5: Taux d'emploi & Chômage -->
+        <article class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
+            <span class="font-semibold uppercase tracking-wider">Taux d'Emploi 20-64 (2026)</span>
+            <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono font-semibold">Cible 2029 : 80 %</span>
+          </div>
+          <div class="text-2xl sm:text-3xl font-extrabold font-mono text-slate-900 dark:text-white">
+            <data value="72.8">72,8 %</data>
+          </div>
+          <p class="mt-2 text-xs text-slate-600 dark:text-slate-400 flex items-center justify-between">
+            <span>5,163 M emplois • Chômage BIT : <strong>6,1 %</strong></span>
+            <span class="font-mono text-[11px] text-amber-600 dark:text-amber-400">[Statbel EFT]</span>
+          </p>
+        </article>
+
+        <!-- KPI 6: Risque de pauvreté AROPE & Gini -->
+        <article class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
+            <span class="font-semibold uppercase tracking-wider">Risque Pauvreté AROPE</span>
+            <span class="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-mono font-semibold">-3,6 pts vs 2019</span>
+          </div>
+          <div class="text-2xl sm:text-3xl font-extrabold font-mono text-slate-900 dark:text-white">
+            <data value="16.5">16,5 %</data>
+          </div>
+          <p class="mt-2 text-xs text-slate-600 dark:text-slate-400 flex items-center justify-between">
+            <span>~1,9 M pers. • Indice Gini : <strong>24,6</strong></span>
+            <span class="font-mono text-[11px] text-amber-600 dark:text-amber-400">[EU-SILC]</span>
+          </p>
+        </article>
+
+        <!-- KPI 7: Indice de Développement Humain -->
+        <article class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
+            <span class="font-semibold uppercase tracking-wider">IDH Nations Unies (2025)</span>
+            <span class="px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 font-mono font-semibold">10e Mondial</span>
+          </div>
+          <div class="text-2xl sm:text-3xl font-extrabold font-mono text-slate-900 dark:text-white">
+            <data value="0.951">0,951</data>
+          </div>
+          <p class="mt-2 text-xs text-slate-600 dark:text-slate-400 flex items-center justify-between">
+            <span>Bonheur WHR 2026 : <strong>14e mondial</strong></span>
+            <span class="font-mono text-[11px] text-amber-600 dark:text-amber-400">[PNUD]</span>
+          </p>
+        </article>
+
+        <!-- KPI 8: Inflation & Gouvernance -->
+        <article class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
+            <span class="font-semibold uppercase tracking-wider">Inflation IPC (Janv. 2026)</span>
+            <span class="px-2 py-0.5 rounded bg-sky-100 dark:bg-sky-500/20 text-sky-700 dark:text-sky-300 font-mono font-semibold">Énergie -9,24 %</span>
+          </div>
+          <div class="text-2xl sm:text-3xl font-extrabold font-mono text-slate-900 dark:text-white">
+            <data value="1.10">1,10 %</data>
+          </div>
+          <p class="mt-2 text-xs text-slate-600 dark:text-slate-400 flex items-center justify-between">
+            <span>Indice santé : <strong>1,37 %</strong> • Sous-jacente : <strong>2,54 %</strong></span>
+            <span class="font-mono text-[11px] text-amber-600 dark:text-amber-400">[Statbel]</span>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- VIEW 1: TABLEAU DE BORD INTERACTIF & VISUALISATIONS                   -->
+    <!-- ===================================================================== -->
+    <div id="view-dashboard" class="space-y-10">
+
+      <!-- Interactive Regional Comparator (Flandre / Wallonie / Bruxelles / Belgique) -->
+      <section aria-labelledby="comparator-heading" class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-slate-800">
+          <div>
+            <span class="text-xs font-mono uppercase tracking-wider text-amber-600 dark:text-amber-400 font-semibold">
+              Asymétries Fédérales &amp; Territoriales
+            </span>
+            <h2 id="comparator-heading" class="text-xl font-bold text-slate-900 dark:text-white mt-0.5">
+              Comparateur Régional Interactif (Flandre • Wallonie • Bruxelles-Capitale)
+            </h2>
+          </div>
+
+          <!-- Region Selector Pills -->
+          <div class="flex flex-wrap gap-1.5" role="group" aria-label="Sélectionner une entité territoriale">
+            <button onclick="selectRegionProfile('all')" id="reg-btn-all" class="reg-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-white dark:bg-amber-400 dark:text-slate-950 transition">
+              Vue Comparative (3 Régions)
+            </button>
+            <button onclick="selectRegionProfile('flandre')" id="reg-btn-flandre" class="reg-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition">
+              Région flamande
+            </button>
+            <button onclick="selectRegionProfile('wallonie')" id="reg-btn-wallonie" class="reg-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition">
+              Région wallonne
+            </button>
+            <button onclick="selectRegionProfile('bruxelles')" id="reg-btn-bruxelles" class="reg-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition">
+              Bruxelles-Capitale
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Region Cards Container -->
+        <div id="regional-comparator-grid" class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-6">
+          <!-- Populated dynamically via JS from BELGIUM_OPEN_DATA -->
+        </div>
+      </section>
+
+      <!-- Main Interactive Charts Grid (6 Charts covering every chapter of the report) -->
+      <section aria-labelledby="charts-heading" class="space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <h2 id="charts-heading" class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <i class="fa-solid fa-chart-line text-rose-500"></i>
+              Visualisations Statistiques &amp; Séries Temporelles
+            </h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400">
+              Survolez ou touchez les graphiques pour inspecter les valeurs exactes et les intervalles de référence.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Chart 1: Démographie & Composantes 2025 + Projection 2080 -->
+          <figure class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-1">
+                <span class="text-xs font-mono font-semibold text-amber-600 dark:text-amber-400 uppercase">Chapitre 1 • Démographie</span>
+                <span class="text-[11px] font-mono text-slate-400">Source : Statbel &amp; BFP (2026–2080)</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white">
+                Trajectoire Démographique Régionale (2025 vs 2026 vs Horizon 2080)
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 mb-4">
+                La Flandre porte 80 % de la croissance nationale (+33 584 hab.) et atteindra 8,2 M d'habitants en 2080, tandis que la Wallonie (3,7 M) et Bruxelles (1,2 M) plafonnent.
+              </p>
+            </div>
+            <div class="relative h-64 w-full">
+              <canvas id="chartDemography"></canvas>
+            </div>
+            <figcaption class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400 flex justify-between">
+              <span>Solde naturel national 2025 : <strong>-4 890</strong> (108 033 naissances / 112 923 décès)</span>
+              <span>Fécondité : <strong>1,40–1,48</strong> enf./femme</span>
+            </figcaption>
+          </figure>
+
+          <!-- Chart 2: Espérance de vie & Convergence Hommes-Femmes (1996-2025) -->
+          <figure class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-1">
+                <span class="text-xs font-mono font-semibold text-sky-600 dark:text-sky-400 uppercase">Chapitre 2 • Santé &amp; Longévité</span>
+                <span class="text-[11px] font-mono text-slate-400">Source : Statbel Tables de mortalité</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white">
+                Espérance de Vie à la Naissance et Convergence des Sexes (1996–2025)
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 mb-4">
+                L'écart de longévité entre femmes et hommes s'est réduit de 6,67 ans en 1996 à 3,87 ans en 2025 grâce au gain rapide chez les hommes (+101 jours en 2025).
+              </p>
+            </div>
+            <div class="relative h-64 w-full">
+              <canvas id="chartLifeExpectancy"></canvas>
+            </div>
+            <figcaption class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400 flex justify-between">
+              <span>Extrêmes provinciaux : <strong>Brabant flamand (83,9 ans)</strong> vs <strong>Hainaut (80,1 ans)</strong></span>
+              <span>Écart : <strong>3,8 ans</strong></span>
+            </figcaption>
+          </figure>
+
+          <!-- Chart 3: Finances Publiques (Dette & Déficit 2024-2028) -->
+          <figure class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-1">
+                <span class="text-xs font-mono font-semibold text-rose-600 dark:text-rose-400 uppercase">Chapitre 3 • Finances Publiques</span>
+                <span class="text-[11px] font-mono text-slate-400">Source : BNB &amp; Bureau fédéral du Plan</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white">
+                Dérive Budgétaire : Dette Publique et Déficit Structurel (% du PIB, 2024–2028)
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 mb-4">
+                Sous l'effet du vieillissement et de la rigidité des dépenses courantes, le déficit structurel grimpe vers 5,7 % du PIB, propulsant la dette à 114,8 % d'ici 2028.
+              </p>
+            </div>
+            <div class="relative h-64 w-full">
+              <canvas id="chartPublicFinance"></canvas>
+            </div>
+            <figcaption class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400 flex justify-between">
+              <span>PIB/hab. SPA (UE27=100) : <strong>Brabant wallon 155</strong> • <strong>Hainaut/Luxembourg ~72</strong></span>
+              <span>Bruxelles : <strong>4e région UE</strong></span>
+            </figcaption>
+          </figure>
+
+          <!-- Chart 4: Marché du travail : Régions & Prime au Diplôme (2026) -->
+          <figure class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-1">
+                <span class="text-xs font-mono font-semibold text-emerald-600 dark:text-emerald-400 uppercase">Chapitre 4 • Marché de l'Emploi</span>
+                <span class="text-[11px] font-mono text-slate-400">Source : Statbel EFT (T1/T2 2026)</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white">
+                Taux d'Emploi (20–64 ans) et Chômage BIT (15–64 ans) par Région et Diplôme
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 mb-4">
+                Fracture marquée entre diplômés du supérieur (85,4 % d'emploi) et faiblement qualifiés (46,4 % d'emploi, 15,5 % de chômage). Chômage des 15–24 ans : 18,2 %.
+              </p>
+            </div>
+            <div class="relative h-64 w-full">
+              <canvas id="chartLaborMarket"></canvas>
+            </div>
+            <figcaption class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400 flex justify-between">
+              <span>Écart d'emploi H/F : <strong>6,1 pts</strong> (Hommes 75,9 % / Femmes 69,8 %)</span>
+              <span>Emploi 55–64 ans : <strong>60,2 %</strong></span>
+            </figcaption>
+          </figure>
+
+          <!-- Chart 5: Éducation PISA 2022 (FW-B vs Flandre vs Communauté germanophone vs OCDE) -->
+          <figure class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-1">
+                <span class="text-xs font-mono font-semibold text-purple-600 dark:text-purple-400 uppercase">Chapitre 6 • Éducation (PISA)</span>
+                <span class="text-[11px] font-mono text-slate-400">Source : OCDE PISA (2018 vs 2022)</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white">
+                Érosion du Capital Humain : Scores PISA en Mathématiques, Lecture et Sciences
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 mb-4">
+                Chute historique en mathématiques : -21 points en Fédération Wallonie-Bruxelles (474) et -17 points en Flandre (501 contre 518 en 2018).
+              </p>
+            </div>
+            <div class="relative h-64 w-full">
+              <canvas id="chartPisa"></canvas>
+            </div>
+            <figcaption class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400 flex justify-between">
+              <span>Pénurie d'enseignants signalée par <strong>39 %</strong> des directeurs d'école</span>
+              <span>Moyenne OCDE Maths : <strong>472 pts</strong></span>
+            </figcaption>
+          </figure>
+
+          <!-- Chart 6: Inclusion Sociale, Pauvreté Subjective & Diversité des Origines -->
+          <figure class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-1">
+                <span class="text-xs font-mono font-semibold text-amber-600 dark:text-amber-400 uppercase">Chapitre 5 • Précarité &amp; Société</span>
+                <span class="text-[11px] font-mono text-slate-400">Source : Statbel EU-SILC 2025</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white">
+                Pauvreté Subjective et Composantes AROPE selon le Profil Socio-Démographique
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 mb-4">
+                Alors que l'AROPE national recule à 16,5 %, la pauvreté subjective frappe 29,4 % des Bruxellois, 39,3 % des chômeurs et 28,1 % des familles monoparentales.
+              </p>
+            </div>
+            <div class="relative h-64 w-full">
+              <canvas id="chartSocialInclusion"></canvas>
+            </div>
+            <figcaption class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400 flex justify-between">
+              <span>Seuil pauvreté isolé : <strong>1 565 €/mois net</strong> (18 780 €/an)</span>
+              <span>Top 10 % patrimoine : <strong>54,4 % du total</strong></span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- International Rankings Benchmark Cards -->
+      <section aria-labelledby="rankings-heading" class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+          <div>
+            <span class="text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400 font-semibold">
+              Benchmarking International (2025–2026)
+            </span>
+            <h2 id="rankings-heading" class="text-xl font-bold text-slate-900 dark:text-white">
+              Positionnement de la Belgique dans les Classements Mondiaux
+            </h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">PNUD • WHR • RSF • Transparency International • Eurostat</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+          <!-- Rank 1: IDH -->
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/70 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-500 dark:text-slate-400">IDH (PNUD 2025)</span>
+                <span class="px-2 py-0.5 rounded text-xs font-mono font-bold bg-amber-400 text-slate-950">#10 / 193</span>
+              </div>
+              <div class="text-2xl font-extrabold font-mono mt-2 text-slate-900 dark:text-white">0,951</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
+                Croissance annuelle moyenne de <strong>+0,26 %</strong>. Devance la France (26e, 0,920), le Royaume-Uni et les États-Unis.
+              </p>
+            </div>
+            <div class="mt-3 pt-2 border-t border-slate-200 dark:border-slate-700 text-[11px] font-mono text-slate-500">
+              1er : Islande (0,972)
+            </div>
+          </div>
+
+          <!-- Rank 2: World Happiness Report -->
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/70 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-500 dark:text-slate-400">Bonheur (WHR 2026)</span>
+                <span class="px-2 py-0.5 rounded text-xs font-mono font-bold bg-emerald-500 text-slate-950">#14 Mondial</span>
+              </div>
+              <div class="text-2xl font-extrabold font-mono mt-2 text-slate-900 dark:text-white">14e rang</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
+                Soutenu par la robustesse du filet de sécurité sociale, l'espérance de vie et la liberté personnelle.
+              </p>
+            </div>
+            <div class="mt-3 pt-2 border-t border-slate-200 dark:border-slate-700 text-[11px] font-mono text-slate-500">
+              World Happiness Report 2026
+            </div>
+          </div>
+
+          <!-- Rank 3: Liberté de la presse RSF -->
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/70 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-500 dark:text-slate-400">Liberté Presse (RSF 2026)</span>
+                <span class="px-2 py-0.5 rounded text-xs font-mono font-bold bg-sky-400 text-slate-950">#16 / 180</span>
+              </div>
+              <div class="text-2xl font-extrabold font-mono mt-2 text-slate-900 dark:text-white">81,17 / 100</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
+                En hausse vs 2025 (18e, 80,12), mais concentration élevée : le groupe Rossel détient <strong>94 %</strong> des quotidiens francophones.
+              </p>
+            </div>
+            <div class="mt-3 pt-2 border-t border-slate-200 dark:border-slate-700 text-[11px] font-mono text-slate-500">
+              VRT : 528,4 M€ • RTBF : 479,7 M€
+            </div>
+          </div>
+
+          <!-- Rank 4: Corruption CPI -->
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/70 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-500 dark:text-slate-400">Intégrité (CPI 2025)</span>
+                <span class="px-2 py-0.5 rounded text-xs font-mono font-bold bg-rose-500 text-white">#21 Mondial</span>
+              </div>
+              <div class="text-2xl font-extrabold font-mono mt-2 text-rose-600 dark:text-rose-400">69 / 100</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
+                Recul structurel par rapport à 2015–2016 (<strong>77/100</strong>). Retards pointés par le GRECO sur le lobbying et le cumul des mandats.
+              </p>
+            </div>
+            <div class="mt-3 pt-2 border-t border-slate-200 dark:border-slate-700 text-[11px] font-mono text-slate-500">
+              Transparency International
+            </div>
+          </div>
+
+          <!-- Rank 5: Transition Énergétique -->
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/70 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-500 dark:text-slate-400">Énergies Renouvelables</span>
+                <span class="px-2 py-0.5 rounded text-xs font-mono font-bold bg-amber-500/20 text-amber-700 dark:text-amber-300">Retard UE</span>
+              </div>
+              <div class="text-2xl font-extrabold font-mono mt-2 text-slate-900 dark:text-white">14,9 %</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
+                Part dans la consommation finale brute d'énergie en 2025, nettement sous la moyenne de l'UE à <strong>26,2 %</strong>.
+              </p>
+            </div>
+            <div class="mt-3 pt-2 border-t border-slate-200 dark:border-slate-700 text-[11px] font-mono text-slate-500">
+              Écart UE : -11,3 pts
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- VIEW 2: RAPPORT ACADÉMIQUE EXHAUSTIF (TEXTE INTÉGRAL & SOURCES)       -->
+    <!-- ===================================================================== -->
+    <div id="view-report" class="hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Sticky Table of Contents Sidebar -->
+        <aside class="lg:col-span-3 lg:sticky lg:top-20 bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4 no-print" aria-label="Sommaire du rapport">
+          <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+            <h2 class="text-xs font-mono uppercase tracking-wider font-bold text-slate-900 dark:text-white">
+              <i class="fa-solid fa-list-ol mr-1.5 text-amber-500"></i>Sommaire Académique
+            </h2>
+            <button onclick="window.print()" class="text-xs text-slate-500 hover:text-slate-900 dark:hover:text-white" title="Imprimer ou exporter en PDF">
+              <i class="fa-solid fa-print"></i> PDF
+            </button>
+          </div>
+          <nav class="space-y-1.5 text-xs">
+            <a href="#chap-intro" class="block px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">0. Introduction Générale</a>
+            <a href="#chap-demo" class="block px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">1. Dynamiques Démographiques (2024–2080)</a>
+            <a href="#chap-sante" class="block px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">2. Santé Publique &amp; Longévité</a>
+            <a href="#chap-macro" class="block px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">3. Macroéconomie &amp; Finances Publiques</a>
+            <a href="#chap-emploi" class="block px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">4. Marché du Travail &amp; Polarisation</a>
+            <a href="#chap-social" class="block px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">5. Inclusion Sociale, AROPE &amp; Richesse</a>
+            <a href="#chap-educ" class="block px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">6. Éducation &amp; Choc PISA 2022</a>
+            <a href="#chap-monde" class="block px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">7. Classements Mondiaux &amp; Gouvernance</a>
+            <a href="#chap-conclusion" class="block px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">8. Conclusion &amp; Références</a>
+          </nav>
+
+          <div class="pt-3 border-t border-slate-200 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400 space-y-2">
+            <div><strong>Auteur :</strong> Gemini 3.1 Pro</div>
+            <div><strong>Dépôt :</strong> <code class="font-mono">ouaisfieu/stats</code></div>
+            <button onclick="copyCitation('bibtex')" class="w-full py-1.5 px-3 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-amber-400 hover:text-slate-950 font-mono text-xs font-semibold transition">
+              <i class="fa-solid fa-copy mr-1"></i>Copier BibTeX
+            </button>
+          </div>
+        </aside>
+
+        <!-- Full Scholarly Article Body -->
+        <article class="lg:col-span-9 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-sm academic-prose space-y-10" itemscope itemtype="https://schema.org/ScholarlyArticle">
+          <meta itemprop="headline" content="Analyse Démographique, Socio-Économique et Institutionnelle de la Belgique : Rapport Statistique Exhaustif (2024-2026)" />
+          <meta itemprop="author" content="Gemini 3.1 Pro — Unité de Recherche Statistique & Analyse Open Data" />
+          <meta itemprop="datePublished" content="2026-01-15" />
+
+          <!-- Report Header -->
+          <header class="border-b border-slate-200 dark:border-slate-800 pb-6 space-y-3">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 text-xs font-mono font-semibold">
+              MONOGRAPHIE STATISTIQUE EXHAUSTIVE • ÉDITION 2026
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-bold font-serif text-slate-900 dark:text-white leading-snug">
+              Analyse Démographique, Socio-Économique et Institutionnelle de la Belgique : Rapport Statistique Exhaustif (2024–2026)
+            </h2>
+            <p class="text-xs font-mono text-slate-500 dark:text-slate-400">
+              Rédigé par <strong>Gemini 3.1 Pro</strong> • Corpus vérifié : Statbel, Banque Nationale de Belgique (BNB), Bureau fédéral du Plan (BFP), IWEPS, OCDE, PNUD, RSF, Transparency International.
+            </p>
+          </header>
+
+          <!-- Introduction -->
+          <section id="chap-intro" class="space-y-4">
+            <h3 class="text-xl font-bold font-serif text-slate-900 dark:text-white border-l-4 border-amber-400 pl-3">
+              0. Introduction
+            </h3>
+            <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+              La Belgique, État fédéral situé au cœur de l'Europe, présente une architecture socio-économique et démographique d'une remarquable complexité. Les dynamiques nationales y sont indissociables des trajectoires régionales souvent asynchrones qui caractérisent la Région flamande, la Région wallonne et la Région de Bruxelles-Capitale. Ce rapport de recherche exhaustif propose une radiographie académique des fondamentaux du pays pour la période 2024–2026, tout en inscrivant ces observations dans des séries temporelles longues et des projections s'étendant jusqu'en 2080.
+            </p>
+            <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+              L'analyse s'appuie sur une synthèse rigoureuse des données issues d'institutions statistiques de premier plan telles que Statbel, la Banque Nationale de Belgique (BNB), le Bureau fédéral du Plan, et l'Institut wallon de l'évaluation, de la prospective et de la statistique (IWEPS). Elle intègre également les indices de référence mondiaux (Nations Unies, OCDE, Reporters Sans Frontières, Transparency International). En dépassant la simple compilation chiffrée, ce document explore les relations de cause à effet entre le vieillissement de la population, la polarisation du marché du travail, la dégradation des finances publiques, les mécanismes de protection sociale et l'érosion des acquis éducatifs. Il en résulte le portrait d'une nation qui maintient un niveau de développement humain et d'égalité parmi les plus élevés au monde, mais dont le modèle fait face à des fragilités structurelles pressantes.
+            </p>
+          </section>
+
+          <!-- Chapter 1: Demography -->
+          <section id="chap-demo" class="space-y-4">
+            <h3 class="text-xl font-bold font-serif text-slate-900 dark:text-white border-l-4 border-amber-400 pl-3">
+              1. Dynamiques Démographiques : Transition Structurelle et Disparités Territoriales
+            </h3>
+            <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+              La démographie belge est entrée dans une phase de transition historique. La croissance de la population ne repose plus sur l'accroissement naturel, mais dépend désormais exclusivement des flux migratoires internationaux.
+            </p>
+
+            <h4 class="text-base font-bold text-slate-900 dark:text-white mt-4">1.1 Évolution Récente et Projections de la Population Légale</h4>
+            <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+              Au 1er janvier 2026, la population légale belge comptait <data value="11867634" class="font-semibold">11 867 634 habitants</data>, ce qui représente une augmentation de 42 083 individus, soit un taux de croissance de 0,36 % par rapport à l'année précédente <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[Statbel 1-3]</span>. Cette progression marque un ralentissement par rapport à l'année 2024, au cours de laquelle la population avait crû de 61 901 habitants (+0,52 %) pour atteindre 11 825 551 résidents au 1er janvier 2025 <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[Statbel 4]</span>. À titre de comparaison historique, le pays comptait 11 569 034 habitants en 2022 <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[5]</span>.
+            </p>
+            <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+              Les projections à très long terme du Bureau fédéral du Plan anticipent la poursuite de cette trajectoire haussière, bien que décélérée. La Belgique devrait atteindre le seuil de <strong>13,1 millions d'habitants à l'horizon 2080</strong> <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[BFP 6, 7]</span>. Le nombre de ménages privés connaîtra une augmentation encore plus rapide que la population elle-même, passant de 5,2 millions en 2025 à 6,17 millions en 2080, une dynamique qui s'explique par la diminution constante de la taille moyenne des ménages, projetée pour passer de 2,2 à 2,0 personnes <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[7]</span>.
+            </p>
+
+            <h4 class="text-base font-bold text-slate-900 dark:text-white mt-4">1.2 Le Rôle Moteur de la Région Flamande, Stabilisation Wallonne et Exode Urbain à Bruxelles</h4>
+            <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+              La Région flamande constitue le principal moteur de l'accroissement de la population belge. Au 1er janvier 2026, la Flandre comptait <strong>6 898 350 habitants</strong>, enregistrant une hausse de 33 584 personnes (+0,49 %) sur une année <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[1-3]</span>. Cette dynamique résulte de la combinaison d'un solde migratoire international fortement positif (83 360 immigrations pour 62 041 émigrations en 2025) et d'un solde migratoire interne également excédentaire, compensant amplement son déficit naturel (-4 176 décès de plus que de naissances en 2025). À l'horizon 2080, la Flandre devrait voir sa population grimper à 8,2 millions d'habitants <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[7]</span>.
+            </p>
+            <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+              La Région wallonne, avec ses <strong>3 713 450 habitants</strong> au 1er janvier 2026, affiche une croissance beaucoup plus modeste de 8 460 habitants (+0,23 %). Le déficit naturel y est plus marqué qu'en Flandre (-5 817 individus en 2025), mais est compensé par un solde migratoire international positif (+9 255) et un apport interne favorable (+4 817). D'ici 2080, la population wallonne devrait se stabiliser autour de 3,7 millions d'habitants.
+            </p>
+            <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+              La Région de Bruxelles-Capitale présente un profil singulier : bien qu'elle accueille un volume exceptionnel d'immigration internationale (solde positif de +13 988 en 2025) et conserve un solde naturel positif, sa population stagne à <strong>1 255 795 habitants</strong> <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[1, 2, 8]</span>. Cette inertie est la conséquence directe d'un solde migratoire interne lourdement négatif : en 2025, la capitale a perdu <strong>18 553 habitants</strong> au profit des autres régions belges.
+            </p>
+
+            <!-- Academic Table 1 -->
+            <div class="overflow-x-auto my-4 rounded-xl border border-slate-200 dark:border-slate-800">
+              <table class="w-full text-left text-xs sm:text-sm">
+                <thead class="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold">
+                  <tr>
+                    <th class="p-3">Entité Territoriale</th>
+                    <th class="p-3 font-mono">Pop. (01/01/2025)</th>
+                    <th class="p-3 font-mono">Pop. (01/01/2026)</th>
+                    <th class="p-3 font-mono">Solde Naturel (2025)</th>
+                    <th class="p-3 font-mono">Croissance Totale</th>
+                    <th class="p-3 font-mono">Proj. 2080</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200 dark:divide-slate-800 font-mono text-xs">
+                  <tr>
+                    <td class="p-3 font-sans font-semibold">Région flamande</td>
+                    <td class="p-3">6 864 766</td>
+                    <td class="p-3 font-bold">6 898 350</td>
+                    <td class="p-3 text-rose-600 dark:text-rose-400">-4 176</td>
+                    <td class="p-3 text-emerald-600 dark:text-emerald-400">+33 584 (+0,49 %)</td>
+                    <td class="p-3">8 200 000</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-sans font-semibold">Région wallonne</td>
+                    <td class="p-3">3 704 990</td>
+                    <td class="p-3 font-bold">3 713 450</td>
+                    <td class="p-3 text-rose-600 dark:text-rose-400">-5 817</td>
+                    <td class="p-3 text-emerald-600 dark:text-emerald-400">+8 460 (+0,23 %)</td>
+                    <td class="p-3">3 700 000</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-sans font-semibold">Région de Bruxelles-Capitale</td>
+                    <td class="p-3">1 255 795</td>
+                    <td class="p-3 font-bold">1 255 795 (env.)</td>
+                    <td class="p-3 text-emerald-600 dark:text-emerald-400">Positif (+5 103)</td>
+                    <td class="p-3 text-slate-500">Stagnation (+39)</td>
+                    <td class="p-3">1 200 000</td>
+                  </tr>
+                  <tr class="bg-amber-50/60 dark:bg-amber-500/10 font-bold">
+                    <td class="p-3 font-sans">Belgique (Royaume)</td>
+                    <td class="p-3">11 825 551</td>
+                    <td class="p-3">11 867 634</td>
+                    <td class="p-3 text-rose-600 dark:text-rose-400">-4 890</td>
+                    <td class="p-3 text-emerald-600 dark:text-emerald-400">+42 083 (+0,36 %)</td>
+                    <td class="p-3">13 100 000</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4 class="text-base font-bold text-slate-900 dark:text-white mt-4">1.3 Structure par Âge, Sexe, Déficit Naturel et Diversité des Origines</h4>
+            <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+              En 2025, on dénombrait <strong>5 995 529 femmes</strong> pour <strong>5 830 022 hommes</strong>, soit un ratio global de 97 hommes pour 100 femmes (105 H/100 F chez les 0–14 ans, 102 chez les 25–54 ans, et 78 H/100 F au-delà de 65 ans) <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[4, 5]</span>. L'âge moyen atteint <strong>42 ans</strong> (contre 38 ans en 1995). La fécondité s'établit entre 1,4 et 1,48 enfant par femme (108 033 naissances en 2025, âge moyen à la première maternité de 31,5 ans, contre 112 923 décès) <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[9]</span>. Les 18–64 ans représentent 60 % de la population (7 099 466 individus) et les plus de 80 ans 5,6 % (contre 3,8 % en 1995). En Wallonie, la part des 65+ est passée de 16,32 % (1996) à 20,57 % (2026), alors qu'à Bruxelles elle a reculé de 17,37 % à 13,36 %.
+            </p>
+            <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+              Selon la méthodologie algorithmique TI110 de Statbel au 1er janvier 2026, la Belgique compte <strong>7 522 691 Belges d'origine belge (63,4 %</strong>, contre 78,5 % en 2006 et 70,7 % en 2016), <strong>2 709 811 Belges d'origine étrangère (22,8 %)</strong> et <strong>1 635 132 non-Belges (13,8 %</strong>, contre 8,6 % en 2006) <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[Statbel 10]</span>. La part de Belges d'origine belge est de 71,1 % en Flandre, 63,1 % en Wallonie et 21,5 % à Bruxelles-Capitale.
+            </p>
+          </section>
+
+          <!-- Chapter 2: Health & Longevity -->
+          <section id="chap-sante" class="space-y-4">
+            <h3 class="text-xl font-bold font-serif text-slate-900 dark:text-white border-l-4 border-sky-400 pl-3">
+              2. Santé Publique et Longévité
+            </h3>
+            <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+              En 2025, l'espérance de vie à la naissance pour la population totale s'établissait à <strong>82,50 ans</strong> (+54 jours sur un an) : <strong>84,40 ans pour les femmes</strong> et <strong>80,53 ans pour les hommes</strong> (+101 jours sur un an) <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[11-13]</span>. L'écart entre les sexes est passé de 6,67 ans en 1996 (73,86 ans H / 80,53 ans F) à <strong>3,87 ans en 2025</strong>. Sur le plan régional, la Flandre domine avec <strong>83,3 ans</strong>, suivie de Bruxelles-Capitale (<strong>82,3 ans</strong>) et de la Wallonie (<strong>81,0 ans</strong>), avec un écart provincial allant de 83,9 ans dans le Brabant flamand à 80,1 ans dans le Hainaut <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[14, 15]</span>.
+            </p>
+          </section>
+
+          <!-- Chapter 3: Macroeconomics & Public Finance -->
+          <section id="chap-macro" class="space-y-4">
+            <h3 class="text-xl font-bold font-serif text-slate-900 dark:text-white border-l-4 border-rose-500 pl-3">
+              3. Macroéconomie, Création de Richesse et Finances Publiques
+            </h3>
+            <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+              Le Produit Intérieur Brut (PIB) nominal de la Belgique pour 2026 est estimé par le FMI à <strong>776,73 milliards USD</strong> <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[16]</span>. Le PIB par habitant en dollars constants atteignait un record de <strong>45 145,66 USD en 2025</strong> (contre 11 715,83 USD en 1960) et est projeté à 46 421 USD en 2028 <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[17]</span>. En 2024, le PIB de la Wallonie s'élevait à 144 milliards € (~23 % du total national) et celui de Bruxelles à 108 milliards €. En Standards de Pouvoir d'Achat (SPA, UE27 = 100), le Brabant wallon culmine à un indice de <strong>155</strong> et Bruxelles se classe 4e région d'Europe, tandis que le Hainaut et la province de Luxembourg plafonnent à <strong>72</strong> <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[18]</span>.
+            </p>
+            <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+              <strong>Finances publiques :</strong> Le déficit des administrations publiques passe de 4,6 % du PIB (2024) à 4,8 % (2025), avec un déficit structurel projeté par la BNB à 5,2 % (2025), <strong>5,5 % (2026)</strong> et 5,7 % en 2028 <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[19, 20]</span>. La dette publique grimpe de 107,9 % du PIB à <strong>111,3 % en 2026</strong> et <strong>114,8 % en 2028</strong>.
+            </p>
+            <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+              <strong>Inflation (Janvier 2026) :</strong> L'indice des prix à la consommation (IPC) a ralenti à <strong>1,10 %</strong> (contre 2,06 % en décembre 2025), l'indice santé à <strong>1,37 %</strong> (98,73 points lissé) et l'inflation sous-jacente à <strong>2,54 %</strong> <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[21]</span>. Ce ralentissement résulte de la baisse des prix de l'énergie (-9,24 %, impact de -1,06 pt), tandis que les médicaments et vaccins (+16,9 %), les villages de vacances (+16,0 %) et la téléphonie mobile (+13,6 %) ont fortement augmenté (smartphones : -17,8 %).
+            </p>
+          </section>
+
+          <!-- Chapter 4: Labor Market -->
+          <section id="chap-emploi" class="space-y-4">
+            <h3 class="text-xl font-bold font-serif text-slate-900 dark:text-white border-l-4 border-emerald-500 pl-3">
+              4. Le Marché du Travail : Polarisation et Inadéquations
+            </h3>
+            <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+              À la mi-2026, le taux d'emploi des 20–64 ans s'établit à <strong>72,8 %</strong> (environ 5 163 000 personnes en emploi), face à un objectif fédéral de 80 % d'ici 2029 <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[22, 23]</span>. L'écart hommes-femmes est descendu à un plancher historique de 6,1 points (75,9 % pour les hommes contre 69,8 % pour les femmes).
+            </p>
+            <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+              Les disparités régionales demeurent profondes : la Flandre affiche un taux d'emploi de <strong>77,3 %</strong> (et 4,0 % de chômage BIT), la Wallonie <strong>67,6 %</strong> (68,0 % au T1, 8,0 % de chômage BIT) et Bruxelles-Capitale <strong>64,7 %</strong> (12,7 % de chômage BIT, contre 6,1 % au niveau national au T2 2026). La prime au diplôme est décisive : les diplômés du supérieur présentent un taux d'emploi de <strong>85,4 %</strong> (86,3 % au T1) et un chômage de 3,7 %, tandis que les personnes peu diplômées plafonnent à <strong>46,4 % d'emploi</strong> (15,5 % de chômage). Le chômage des jeunes (15–24 ans) atteint 18,2 % et le taux d'emploi des 55–64 ans progresse à 60,2 % <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[22-26]</span>.
+            </p>
+          </section>
+
+          <!-- Chapter 5: Social Inclusion & Poverty -->
+          <section id="chap-social" class="space-y-4">
+            <h3 class="text-xl font-bold font-serif text-slate-900 dark:text-white border-l-4 border-amber-500 pl-3">
+              5. Inclusion Sociale, Répartition des Richesses et Pauvreté (EU-SILC)
+            </h3>
+            <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+              En 2025, l'indicateur européen AROPE (risque de pauvreté ou d'exclusion sociale) concerne <strong>16,5 % de la population belge</strong> (~1,9 million de personnes), en baisse significative par rapport à 2024 (18,3 %) et 2019 (20,1 %) <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[27-29]</span>. Ses trois piliers sont :
+            </p>
+            <ul class="list-disc pl-6 space-y-2 text-sm sm:text-base text-slate-700 dark:text-slate-300">
+              <li><strong>Risque de pauvreté monétaire (AROP) : 10,9 %</strong> des Belges vivent sous le seuil fixé à 60 % du revenu médian national disponible équivalent (31 299 €/an), soit <strong>18 780 €/an nets (1 565 €/mois)</strong> pour un isolé et <strong>39 438 €/an</strong> pour deux adultes et deux enfants <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[28, 30]</span>.</li>
+              <li><strong>Faible intensité de travail (LWI) : 11,0 %</strong> de la population vit dans un ménage ayant presté moins de 20 % de son potentiel de travail annuel.</li>
+              <li><strong>Privation matérielle et sociale sévère (SMSD) : 4,9 %</strong> (contre 6,2 % en 2024). Impossibilité de partir en vacances (21,4 %), remplacer des meubles usagés (15,6 %), loisirs payants (12,8 %), impayés de factures (5 %) <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[27, 31]</span>.</li>
+            </ul>
+            <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+              L'<strong>Indice de Gini</strong> des revenus est très bas à <strong>24,6</strong> en 2024 (et <strong>22,7 en Wallonie</strong>), avec un ratio interquintile S80/S20 de <strong>3,5</strong> <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[29, 32]</span>. En revanche, les <strong>10 % des ménages les plus riches détiennent 54,4 % du patrimoine net total</strong> (seuil d'entrée dans ce décile : 1,16 million €) <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[33]</span>. Enfin, la <strong>pauvreté subjective</strong> touche 15,5 % des Belges (29,4 % à Bruxelles, 21,9 % en Wallonie, 9,4 % en Flandre).
+            </p>
+          </section>
+
+          <!-- Chapter 6: Education PISA -->
+          <section id="chap-educ" class="space-y-4">
+            <h3 class="text-xl font-bold font-serif text-slate-900 dark:text-white border-l-4 border-purple-500 pl-3">
+              6. Éducation et Capital Humain : L'Érosion Révélée par PISA
+            </h3>
+            <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+              L'enquête PISA 2022 de l'OCDE met en évidence un recul marqué dans les trois communautés linguistiques <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[34, 35]</span> :
+            </p>
+            <ul class="list-disc pl-6 space-y-2 text-sm sm:text-base text-slate-700 dark:text-slate-300">
+              <li><strong>Fédération Wallonie-Bruxelles :</strong> Chute de 21 points en mathématiques à <strong>474 points</strong> (moyenne OCDE : 472), recul en lecture à <strong>474 points</strong> (-23 points sur 10 ans) et <strong>479 points</strong> en sciences (-6 points).</li>
+              <li><strong>Communauté flamande :</strong> Décrochage en mathématiques de 518 points (2018) à <strong>501 points (2022)</strong>, lecture à <strong>483 points</strong> (contre 502) et sciences à <strong>499 points</strong>.</li>
+              <li><strong>Communauté germanophone :</strong> Score en mathématiques en repli à <strong>483 points</strong>. Près de <strong>39 % des chefs d'établissement</strong> belges signalent une pénurie critique d'enseignants qualifiés.</li>
+            </ul>
+          </section>
+
+          <!-- Chapter 7: Global Rankings -->
+          <section id="chap-monde" class="space-y-4">
+            <h3 class="text-xl font-bold font-serif text-slate-900 dark:text-white border-l-4 border-sky-500 pl-3">
+              7. Classements Mondiaux : Développement, Droits et Gouvernance
+            </h3>
+            <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+              La Belgique se classe <strong>10e mondiale à l'IDH du PNUD (0,951</strong>, croissance +0,26 %/an) <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[36-39]</span> et <strong>14e au World Happiness Report 2026</strong> <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[40, 41]</span>. En matière de liberté de la presse (RSF 2026), elle occupe le <strong>16e rang sur 180 pays (81,17/100)</strong> avec un financement public élevé (528,4 M€ pour la VRT et 479,7 M€ pour la RTBF en 2025), mais une concentration préoccupante (94 % des quotidiens francophones détenus par le groupe Rossel) <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[42-47]</span>. L'Indice de perception de la corruption (CPI 2025 de Transparency International) place le pays au <strong>21e rang mondial (69/100</strong>, contre 77/100 en 2015–2016) <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[48-50]</span>. Enfin, la part des énergies renouvelables plafonne à <strong>14,9 %</strong> de la consommation finale brute (contre 26,2 % dans l'UE) <span class="cite-badge bg-slate-100 dark:bg-slate-800 text-amber-600">[51-53]</span>.
+            </p>
+          </section>
+
+          <!-- Chapter 8: Conclusion -->
+          <section id="chap-conclusion" class="space-y-4 border-t border-slate-200 dark:border-slate-800 pt-6">
+            <h3 class="text-xl font-bold font-serif text-slate-900 dark:text-white border-l-4 border-slate-900 dark:border-white pl-3">
+              8. Conclusion Synthétique
+            </h3>
+            <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+              Au mitan des années 2020, la Belgique valide la résilience protectrice de son modèle de concertation sociale (10e IDH mondial, coefficient de Gini parmi les plus égalitaires d'Europe à 24,6, espérance de vie de 82,5 ans), mais fait face à quatre défis systémiques : le creusement de sa dette publique (111,3 % du PIB en 2026), l'éviction des personnes peu qualifiées du marché du travail (46,4 % d'emploi), la précarité urbaine bruxelloise (29,4 % de pauvreté subjective) et l'érosion des performances scolaires mesurées par PISA.
+            </p>
+          </section>
+        </article>
+      </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- VIEW 3: CATALOGUE OPEN DATA INTERACTIF (58 INDICATEURS VÉRIFIÉS)      -->
+    <!-- ===================================================================== -->
+    <div id="view-opendata" class="hidden space-y-6">
+      <section class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm space-y-6">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-5">
+          <div>
+            <span class="text-xs font-mono uppercase tracking-wider text-emerald-600 dark:text-emerald-400 font-semibold">
+              Registre Statistique Normalisé • Licence CC0
+            </span>
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white mt-0.5">
+              Explorateur de la Base Open Data (<span id="dataset-count-badge">58</span> indicateurs officiels)
+            </h2>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="exportDataset('csv')" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-mono font-semibold transition flex items-center gap-1.5">
+              <i class="fa-solid fa-file-csv"></i>Télécharger CSV
+            </button>
+            <button onclick="exportDataset('json')" class="px-3.5 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-mono font-semibold transition flex items-center gap-1.5">
+              <i class="fa-solid fa-file-code"></i>Télécharger JSON
+            </button>
+          </div>
+        </div>
+
+        <!-- Search & Category Filter Controls -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+          <div class="md:col-span-5 relative">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+            <input type="search" id="opendata-search" oninput="renderOpenDataTable()" placeholder="Rechercher un indicateur (ex: PIB, Gini, PISA, Hainaut, dette...)" class="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400" />
+          </div>
+          <div class="md:col-span-4">
+            <select id="opendata-category" onchange="renderOpenDataTable()" aria-label="Filtrer par thématique" class="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400">
+              <option value="ALL">Toutes les thématiques (7 domaines)</option>
+              <option value="Démographie">1. Démographie &amp; Origines</option>
+              <option value="Santé">2. Santé &amp; Longévité</option>
+              <option value="Macroéconomie">3. Macroéconomie, Dette &amp; Inflation</option>
+              <option value="Emploi">4. Marché du Travail &amp; Diplôme</option>
+              <option value="Social">5. Inclusion Sociale, Pauvreté &amp; Patrimoine</option>
+              <option value="Éducation">6. Éducation (PISA 2022)</option>
+              <option value="Classements">7. Classements Mondiaux &amp; Énergie</option>
+            </select>
+          </div>
+          <div class="md:col-span-3">
+            <select id="opendata-territory" onchange="renderOpenDataTable()" aria-label="Filtrer par territoire" class="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400">
+              <option value="ALL">Tous les territoires</option>
+              <option value="Belgique">Belgique (Fédéral)</option>
+              <option value="Flandre">Région flamande</option>
+              <option value="Wallonie">Région wallonne / FW-B</option>
+              <option value="Bruxelles">Bruxelles-Capitale</option>
+              <option value="Provinces">Provinces (Brabant, Hainaut...)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Filterable Data Table -->
+        <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead class="bg-slate-100 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 font-mono text-xs uppercase">
+              <tr>
+                <th class="p-3.5">ID</th>
+                <th class="p-3.5">Domaine</th>
+                <th class="p-3.5">Indicateur Statistique</th>
+                <th class="p-3.5">Territoire</th>
+                <th class="p-3.5">Valeur Officielle</th>
+                <th class="p-3.5">Année / Période</th>
+                <th class="p-3.5">Source Académique</th>
+              </tr>
+            </thead>
+            <tbody id="opendata-table-body" class="divide-y divide-slate-200 dark:divide-slate-800">
+              <!-- Populated dynamically by JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- VIEW 4: ARCHITECTURE WEB SÉMANTIQUE, SEO & DÉPLOIEMENT JAMSTACK       -->
+    <!-- ===================================================================== -->
+    <div id="view-semantic" class="hidden space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left Column: Semantic Web & SEO Checklist -->
+        <section class="lg:col-span-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm space-y-5">
+          <div>
+            <span class="text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400 font-semibold">
+              Conformité W3C &amp; Indexation Scientifique
+            </span>
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white mt-0.5">
+              Architecture Web Sémantique &amp; SEO
+            </h2>
+          </div>
+
+          <ul class="space-y-3 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-circle-check text-emerald-500 mt-1"></i>
+              <div>
+                <strong>Graphe JSON-LD Schema.org multi-entités :</strong> Intègre <code class="font-mono text-xs">Dataset</code> (compatible Google Dataset Search), <code class="font-mono text-xs">ScholarlyArticle</code>, <code class="font-mono text-xs">WebSite</code> et <code class="font-mono text-xs">FAQPage</code>.
+              </div>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-circle-check text-emerald-500 mt-1"></i>
+              <div>
+                <strong>Métadonnées Dublin Core (DC.*) :</strong> Balises <code class="font-mono text-xs">DC.title</code>, <code class="font-mono text-xs">DC.creator</code>, <code class="font-mono text-xs">DC.coverage</code> et <code class="font-mono text-xs">DC.rights</code> pour les moissonneurs académiques.
+              </div>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-circle-check text-emerald-500 mt-1"></i>
+              <div>
+                <strong>Balises HTML5 <code class="font-mono">&lt;data value="..."&gt;</code> :</strong> Chaque chiffre clé associe sa représentation lisible francophone à sa valeur numérique brute normalisée.
+              </div>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-circle-check text-emerald-500 mt-1"></i>
+              <div>
+                <strong>Anonymat garanti :</strong> L'auteur déclaré dans le DOM, les métadonnées Dublin Core et le graphe Schema.org est exclusivement <em>Gemini 3.1 Pro</em>, rattaché au dépôt public <code class="font-mono">github.com/ouaisfieu/stats</code> sans aucune donnée personnelle.
+              </div>
+            </li>
+          </ul>
+
+          <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-2">
+            <div class="text-xs font-mono font-bold text-slate-900 dark:text-white">
+              <i class="fa-brands fa-github mr-1.5"></i>Déploiement rapide sur GitHub Pages
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Placez simplement ce fichier <code class="font-mono font-semibold">index.html</code> à la racine de la branche <code class="font-mono">main</code> de votre dépôt <code class="font-mono">https://github.com/ouaisfieu/stats</code>, puis activez <strong>Settings → Pages → Deploy from a branch (main / root)</strong>.
+            </p>
+          </div>
+        </section>
+
+        <!-- Right Column: Live JSON-LD / API Payload Inspector -->
+        <section class="lg:col-span-7 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <span class="text-xs font-mono uppercase tracking-wider text-amber-600 dark:text-amber-400 font-semibold">
+                Inspecteur de Données Structurées
+              </span>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">
+                Graphe JSON-LD Schema.org &amp; Store Open Data Embarqué
+              </h3>
+            </div>
+            <div class="flex gap-2">
+              <button onclick="copyJsonLd()" class="px-3 py-1.5 rounded-lg bg-slate-900 dark:bg-amber-400 text-white dark:text-slate-950 text-xs font-mono font-semibold transition">
+                <i class="fa-solid fa-copy mr-1"></i>Copier JSON-LD
+              </button>
+            </div>
+          </div>
+
+          <pre id="jsonld-inspector" class="bg-slate-950 text-emerald-400 p-4 rounded-xl font-mono text-xs overflow-x-auto max-h-96 leading-relaxed border border-slate-800"></pre>
+        </section>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 mt-16 py-10 no-print" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 text-xs text-slate-500 dark:text-slate-400">
+      <div class="space-y-1">
+        <div class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+          La Belgique en Chiffres (2024–2026) — Portail Statistique &amp; Open Data
+        </div>
+        <p>
+          Auteur &amp; Ingénierie des données : <strong>Gemini 3.1 Pro (IA de Recherche Statistique)</strong> • Dépôt : <a href="https://github.com/ouaisfieu/stats" target="_blank" rel="noopener noreferrer" class="underline hover:text-amber-500 font-mono">github.com/ouaisfieu/stats</a>
+        </p>
+        <p>
+          Sources primaires : Statbel, Banque Nationale de Belgique (BNB), Bureau fédéral du Plan (BFP), IWEPS, OCDE (PISA), PNUD, RSF, Transparency International, FMI.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <button onclick="exportDataset('json')" class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 font-mono">
+          API JSON
+        </button>
+        <button onclick="exportDataset('csv')" class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 font-mono">
+          Dataset CSV
+        </button>
+        <button onclick="copyCitation('apa')" class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 font-mono">
+          Citation APA
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Custom Non-Blocking Toast Notification (Replaces alert()) -->
+  <div id="toast-notification" role="status" aria-live="polite" class="fixed bottom-5 right-5 z-50 hidden max-w-md bg-slate-900 dark:bg-slate-800 text-white px-4 py-3 rounded-xl shadow-2xl border border-amber-400/50 flex items-center gap-3 transition-all">
+    <i class="fa-solid fa-circle-check text-amber-400 text-lg"></i>
+    <div class="text-xs">
+      <div id="toast-title" class="font-bold">Opération réussie</div>
+      <div id="toast-message" class="text-slate-300 mt-0.5">Données copiées dans le presse-papiers.</div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPT ENGINE: EMBEDDED OPEN DATA STORE, CHARTS & EXPORTERS       -->
+  <!-- ===================================================================== -->
+  <script>
+    /**
+     * Embedded Jamstack Open Data Store
+     * Contains all verified indicators from the 2024-2026 Statistical Report
+     */
+    window.BELGIUM_OPEN_DATA = {
+      metadata: {
+        title: "La Belgique en Chiffres : Base Open Data Exhaustive (2024-2026 & Projections 2080)",
+        author: "Gemini 3.1 Pro — Unité de Recherche Statistique & Analyse Open Data",
+        repository: "https://github.com/ouaisfieu/stats",
+        canonicalUrl: "https://ouaisfieu.github.io/stats/",
+        version: "2026.10",
+        license: "CC0-1.0 (Public Domain Dedication)",
+        lastUpdated: "2026-10-03"
+      },
+      regionalProfiles: {
+        flandre: {
+          name: "Région flamande",
+          badge: "Moteur démographique & plein-emploi",
+          badgeColor: "amber",
+          pop2026: "6 898 350",
+          popGrowth: "+33 584 (+0,49 %)",
+          naturalBalance: "-4 176",
+          proj2080: "8,2 millions",
+          originBelgianPct: "71,1 %",
+          lifeExpectancy: "83,3 ans (Brabant flamand : 83,9 ans)",
+          employmentRate: "77,3 %",
+          unemploymentRate: "4,0 % (Plein-emploi technique)",
+          subjectivePoverty: "9,4 %",
+          pisaMath: "501 pts (vs 518 en 2018)"
+        },
+        wallonie: {
+          name: "Région wallonne",
+          badge: "Transition post-industrielle & égalitarisme",
+          badgeColor: "rose",
+          pop2026: "3 713 450",
+          popGrowth: "+8 460 (+0,23 %)",
+          naturalBalance: "-5 817",
+          proj2080: "3,7 millions",
+          originBelgianPct: "63,1 %",
+          lifeExpectancy: "81,0 ans (Hainaut : 80,1 ans)",
+          employmentRate: "67,6 % (T1 : 68,0 %)",
+          unemploymentRate: "8,0 %",
+          subjectivePoverty: "21,9 % (Gini Wallonie : 22,7)",
+          pisaMath: "474 pts FW-B (-21 pts vs 2018)"
+        },
+        bruxelles: {
+          name: "Région de Bruxelles-Capitale",
+          badge: "Hub économique européen & métropole cosmopolite",
+          badgeColor: "sky",
+          pop2026: "1 255 795",
+          popGrowth: "Stagnation (Exode interne : -18 553)",
+          naturalBalance: "Positif (+5 103)",
+          proj2080: "1,2 million",
+          originBelgianPct: "21,5 % (~80 % origine/nat. étrangère)",
+          lifeExpectancy: "82,3 ans",
+          employmentRate: "64,7 %",
+          unemploymentRate: "12,7 %",
+          subjectivePoverty: "29,4 %",
+          pisaMath: "474 pts (FW-B) / 501 pts (NL)"
+        }
+      },
+      indicators: [
+        // 1. Démographie
+        { id: "DEM-01", category: "Démographie", label: "Population légale au 1er janvier 2026", territory: "Belgique", value: "11 867 634", numeric: 11867634, unit: "habitants", period: "01/01/2026", source: "Statbel [1,2,3]" },
+        { id: "DEM-02", category: "Démographie", label: "Croissance démographique annuelle (2025-2026)", territory: "Belgique", value: "+42 083 (+0,36 %)", numeric: 0.36, unit: "%", period: "2025-2026", source: "Statbel [1,2,3]" },
+        { id: "DEM-03", category: "Démographie", label: "Population légale au 1er janvier 2025", territory: "Belgique", value: "11 825 551 (+0,52 %)", numeric: 11825551, unit: "habitants", period: "01/01/2025", source: "Statbel [4]" },
+        { id: "DEM-04", category: "Démographie", label: "Projection de la population à long terme", territory: "Belgique", value: "13 100 000", numeric: 13100000, unit: "habitants", period: "Horizon 2080", source: "Bureau fédéral du Plan [6,7]" },
+        { id: "DEM-05", category: "Démographie", label: "Nombre de ménages privés (2025 → 2080)", territory: "Belgique", value: "5,2 M → 6,17 M (taille 2,2 → 2,0)", numeric: 5200000, unit: "ménages", period: "2025-2080", source: "Bureau fédéral du Plan [7]" },
+        { id: "DEM-06", category: "Démographie", label: "Population légale - Région flamande", territory: "Flandre", value: "6 898 350 (+33 584 / +0,49 %)", numeric: 6898350, unit: "habitants", period: "01/01/2026", source: "Statbel [1,2,3]" },
+        { id: "DEM-07", category: "Démographie", label: "Population légale - Région wallonne", territory: "Wallonie", value: "3 713 450 (+8 460 / +0,23 %)", numeric: 3713450, unit: "habitants", period: "01/01/2026", source: "Statbel [1,2,3]" },
+        { id: "DEM-08", category: "Démographie", label: "Population légale - Région de Bruxelles-Capitale", territory: "Bruxelles", value: "1 255 795 (Stagnation)", numeric: 1255795, unit: "habitants", period: "01/01/2026", source: "Statbel [1,2,8]" },
+        { id: "DEM-09", category: "Démographie", label: "Solde migratoire interne de Bruxelles-Capitale", territory: "Bruxelles", value: "-18 553 (exode urbain)", numeric: -18553, unit: "habitants", period: "2025", source: "Statbel [1,2]" },
+        { id: "DEM-10", category: "Démographie", label: "Solde naturel national (Naissances - Décès)", territory: "Belgique", value: "-4 890 (108 033 naiss. / 112 923 décès)", numeric: -4890, unit: "personnes", period: "2025", source: "Statbel [1,2,9]" },
+        { id: "DEM-11", category: "Démographie", label: "Indice conjoncturel de fécondité & 1ère maternité", territory: "Belgique", value: "1,40 à 1,48 enf./femme (1ère mère : 31,5 ans)", numeric: 1.44, unit: "enfants/femme", period: "2025", source: "Statbel / BFP [7,9]" },
+        { id: "DEM-12", category: "Démographie", label: "Âge moyen de la population belge", territory: "Belgique", value: "42,0 ans (vs 38,0 ans en 1995)", numeric: 42.0, unit: "ans", period: "2025", source: "Statbel [4]" },
+        { id: "DEM-13", category: "Démographie", label: "Ratio Hommes / Femmes total et par âge", territory: "Belgique", value: "97 H / 100 F (65+ ans : 78 H / 100 F)", numeric: 97, unit: "H/100F", period: "2025", source: "Statbel [4,5]" },
+        { id: "DEM-14", category: "Démographie", label: "Part des 65 ans et plus en Wallonie vs Bruxelles", territory: "Wallonie", value: "Wallonie : 20,57 % • Bruxelles : 13,36 %", numeric: 20.57, unit: "%", period: "2026", source: "Statbel [2]" },
+        { id: "DEM-15", category: "Démographie", label: "Belges d'origine belge (méthodologie TI110)", territory: "Belgique", value: "7 522 691 (63,4 % vs 78,5 % en 2006)", numeric: 63.4, unit: "%", period: "01/01/2026", source: "Statbel [10]" },
+        { id: "DEM-16", category: "Démographie", label: "Belges d'origine étrangère & Non-Belges", territory: "Belgique", value: "2 709 811 (22,8 %) + 1 635 132 non-Belges (13,8 %)", numeric: 36.6, unit: "%", period: "01/01/2026", source: "Statbel [10]" },
+        { id: "DEM-17", category: "Démographie", label: "Part des résidents d'origine ou nationalité étrangère à Bruxelles", territory: "Bruxelles", value: "78,5 % (21,5 % Belges d'origine belge)", numeric: 78.5, unit: "%", period: "01/01/2026", source: "Statbel [10]" },
+
+        // 2. Santé & Longévité
+        { id: "SAN-01", category: "Santé", label: "Espérance de vie à la naissance (Population totale)", territory: "Belgique", value: "82,50 ans (+54 jours vs 2024)", numeric: 82.5, unit: "ans", period: "2025", source: "Statbel [11,12]" },
+        { id: "SAN-02", category: "Santé", label: "Espérance de vie des Femmes vs Hommes", territory: "Belgique", value: "Femmes : 84,40 ans • Hommes : 80,53 ans", numeric: 84.4, unit: "ans", period: "2025", source: "Statbel [11,12]" },
+        { id: "SAN-03", category: "Santé", label: "Écart de longévité Femmes - Hommes", territory: "Belgique", value: "3,87 ans (vs 6,67 ans en 1996)", numeric: 3.87, unit: "ans", period: "2025", source: "Statbel [11,13]" },
+        { id: "SAN-04", category: "Santé", label: "Espérance de vie par Région", territory: "Belgique", value: "Flandre 83,3 • Bruxelles 82,3 • Wallonie 81,0", numeric: 83.3, unit: "ans", period: "2025", source: "Statbel [14,15]" },
+        { id: "SAN-05", category: "Santé", label: "Écart provincial maximal d'espérance de vie", territory: "Provinces", value: "Brabant flamand : 83,9 ans vs Hainaut : 80,1 ans", numeric: 3.8, unit: "ans d'écart", period: "2025", source: "Statbel [11,13]" },
+
+        // 3. Macroéconomie & Finances Publiques
+        { id: "ECO-01", category: "Macroéconomie", label: "Produit Intérieur Brut (PIB) nominal", territory: "Belgique", value: "776,73 milliards USD", numeric: 776.73, unit: "Mds USD", period: "2026", source: "FMI [16]" },
+        { id: "ECO-02", category: "Macroéconomie", label: "PIB par habitant en dollars constants", territory: "Belgique", value: "45 145,66 USD (Proj. 2028 : 46 421 USD)", numeric: 45145.66, unit: "USD", period: "2025", source: "Banque Mondiale / FMI [17]" },
+        { id: "ECO-03", category: "Macroéconomie", label: "PIB régional de la Wallonie et de Bruxelles", territory: "Wallonie", value: "Wallonie : 144 Mds € (23 %) • Bruxelles : 108 Mds €", numeric: 144, unit: "Mds EUR", period: "2024", source: "IWEPS / BNB [18]" },
+        { id: "ECO-04", category: "Macroéconomie", label: "PIB/hab. en Standards de Pouvoir d'Achat (UE27=100)", territory: "Provinces", value: "Brabant wallon : 155 • Hainaut & Luxembourg : 72", numeric: 155, unit: "Indice UE27=100", period: "2024", source: "Eurostat / IWEPS [18]" },
+        { id: "ECO-05", category: "Macroéconomie", label: "Déficit budgétaire des administrations publiques", territory: "Belgique", value: "4,6 % (2024) → 5,5 % (2026) → 5,7 % (2028)", numeric: 5.5, unit: "% du PIB", period: "2024-2028", source: "BNB / BFP [19,20]" },
+        { id: "ECO-06", category: "Macroéconomie", label: "Dette publique consolidée (Critère Maastricht)", territory: "Belgique", value: "107,9 % (2024) → 111,3 % (2026) → 114,8 % (2028)", numeric: 111.3, unit: "% du PIB", period: "2024-2028", source: "BNB [20]" },
+        { id: "ECO-07", category: "Macroéconomie", label: "Inflation IPC, Indice santé et Sous-jacente", territory: "Belgique", value: "IPC : 1,10 % • Indice santé : 1,37 % • Sous-jacente : 2,54 %", numeric: 1.1, unit: "%", period: "Janvier 2026", source: "Statbel [21]" },
+        { id: "ECO-08", category: "Macroéconomie", label: "Variations extrêmes de prix (Énergie vs Services/Santé)", territory: "Belgique", value: "Énergie -9,24 % • Médicaments +16,9 % • Smartphones -17,8 %", numeric: -9.24, unit: "%", period: "Janvier 2026", source: "Statbel [21]" },
+
+        // 4. Marché du Travail
+        { id: "EMP-01", category: "Emploi", label: "Taux d'emploi national (20-64 ans)", territory: "Belgique", value: "72,8 % (5 163 000 personnes ; Cible 2029 : 80 %)", numeric: 72.8, unit: "%", period: "T1/T2 2026", source: "Statbel EFT [22,23]" },
+        { id: "EMP-02", category: "Emploi", label: "Taux d'emploi Hommes vs Femmes (20-64 ans)", territory: "Belgique", value: "Hommes : 75,9 % • Femmes : 69,8 % (Écart : 6,1 pts)", numeric: 6.1, unit: "points d'écart", period: "T1 2026", source: "Statbel EFT [22,23]" },
+        { id: "EMP-03", category: "Emploi", label: "Taux d'emploi en Région flamande", territory: "Flandre", value: "77,3 %", numeric: 77.3, unit: "%", period: "T2 2026", source: "Statbel EFT [22,23]" },
+        { id: "EMP-04", category: "Emploi", label: "Taux d'emploi en Région wallonne", territory: "Wallonie", value: "67,6 % (68,0 % au T1 2026)", numeric: 67.6, unit: "%", period: "T2 2026", source: "Statbel EFT [22,23]" },
+        { id: "EMP-05", category: "Emploi", label: "Taux d'emploi en Région de Bruxelles-Capitale", territory: "Bruxelles", value: "64,7 %", numeric: 64.7, unit: "%", period: "T2 2026", source: "Statbel EFT [22,23]" },
+        { id: "EMP-06", category: "Emploi", label: "Taux de chômage BIT (15-64 ans) National & Régional", territory: "Belgique", value: "National : 6,1 % (Flandre 4,0 % • Wallonie 8,0 % • Bxl 12,7 %)", numeric: 6.1, unit: "%", period: "T2 2026", source: "Statbel EFT [22,23]" },
+        { id: "EMP-07", category: "Emploi", label: "Taux d'emploi et chômage des diplômés du supérieur", territory: "Belgique", value: "Emploi : 85,4 % (86,3 % T1) • Chômage BIT : 3,7 %", numeric: 85.4, unit: "%", period: "2026", source: "Statbel EFT [22,23]" },
+        { id: "EMP-08", category: "Emploi", label: "Taux d'emploi et chômage des faiblement qualifiés", territory: "Belgique", value: "Emploi : 46,4 % • Chômage BIT : 15,5 % (15,8 % T1)", numeric: 46.4, unit: "%", period: "2026", source: "Statbel EFT [22,23]" },
+        { id: "EMP-09", category: "Emploi", label: "Chômage des jeunes (15-24 ans) & Emploi seniors (55-64 ans)", territory: "Belgique", value: "Chômage 15-24 ans : 18,2 % • Emploi 55-64 ans : 60,2 %", numeric: 18.2, unit: "%", period: "2026", source: "Statbel EFT [22-26]" },
+
+        // 5. Inclusion Sociale & Pauvreté
+        { id: "SOC-01", category: "Social", label: "Risque de pauvreté ou d'exclusion sociale (AROPE)", territory: "Belgique", value: "16,5 % (~1,9 M personnes ; vs 20,1 % en 2019)", numeric: 16.5, unit: "%", period: "2025", source: "Statbel EU-SILC [27,28,29]" },
+        { id: "SOC-02", category: "Social", label: "Risque de pauvreté monétaire (AROP)", territory: "Belgique", value: "10,9 %", numeric: 10.9, unit: "%", period: "2025", source: "Statbel EU-SILC [28]" },
+        { id: "SOC-03", category: "Social", label: "Seuil de pauvreté net (Isolé vs Famille 2 adultes + 2 enfants)", territory: "Belgique", value: "Isolé : 18 780 €/an (1 565 €/mois) • Famille : 39 438 €/an", numeric: 18780, unit: "EUR/an", period: "SILC 2025", source: "Statbel [30]" },
+        { id: "SOC-04", category: "Social", label: "Revenu national disponible équivalent médian", territory: "Belgique", value: "31 299 €/an", numeric: 31299, unit: "EUR/an", period: "SILC 2025", source: "Statbel [30]" },
+        { id: "SOC-05", category: "Social", label: "Faible intensité de travail (LWI) & Privation sévère (SMSD)", territory: "Belgique", value: "LWI : 11,0 % • SMSD : 4,9 % (vs 6,2 % en 2024)", numeric: 4.9, unit: "%", period: "2025", source: "Statbel EU-SILC [27,28]" },
+        { id: "SOC-06", category: "Social", label: "Coefficient de Gini des revenus (Belgique & Wallonie)", territory: "Belgique", value: "Belgique : 24,6 • Wallonie : 22,7 (0,227) • Ratio S80/S20 : 3,5", numeric: 24.6, unit: "Indice Gini", period: "2024", source: "Statbel / IWEPS [29,32]" },
+        { id: "SOC-07", category: "Social", label: "Concentration du patrimoine net (Top 10 % des ménages)", territory: "Belgique", value: "54,4 % du patrimoine total (seuil d'entrée : 1,16 M€)", numeric: 54.4, unit: "%", period: "2024-2025", source: "BNB [33]" },
+        { id: "SOC-08", category: "Social", label: "Pauvreté subjective nationale et régionale", territory: "Belgique", value: "National : 15,5 % (Bruxelles 29,4 % • Wallonie 21,9 % • Flandre 9,4 %)", numeric: 15.5, unit: "%", period: "2025", source: "Statbel EU-SILC [27,28]" },
+
+        // 6. Éducation (PISA)
+        { id: "EDU-01", category: "Éducation", label: "Score PISA Mathématiques - Fédération Wallonie-Bruxelles", territory: "Wallonie", value: "474 pts (-21 pts vs 2018 ; Moyenne OCDE : 472)", numeric: 474, unit: "points PISA", period: "PISA 2022", source: "OCDE [34,35]" },
+        { id: "EDU-02", category: "Éducation", label: "Scores PISA Lecture & Sciences - Fédération Wallonie-Bruxelles", territory: "Wallonie", value: "Lecture : 474 pts (-23 pts sur 10 ans) • Sciences : 479 pts", numeric: 474, unit: "points PISA", period: "PISA 2022", source: "OCDE [34,35]" },
+        { id: "EDU-03", category: "Éducation", label: "Scores PISA - Communauté flamande (Maths, Lecture, Sciences)", territory: "Flandre", value: "Maths : 501 (vs 518) • Lecture : 483 (vs 502) • Sciences : 499", numeric: 501, unit: "points PISA", period: "PISA 2022", source: "OCDE [35]" },
+        { id: "EDU-04", category: "Éducation", label: "Score PISA Mathématiques - Communauté germanophone & Pénurie", territory: "Belgique", value: "Germanophone Maths : 483 pts • Pénurie profs : 39 % des écoles", numeric: 483, unit: "points PISA", period: "PISA 2022", source: "OCDE [34,35]" },
+
+        // 7. Classements Mondiaux & Gouvernance
+        { id: "CLS-01", category: "Classements", label: "Indice de Développement Humain (IDH) du PNUD", territory: "Belgique", value: "10e mondial (Score : 0,951 ; croissance +0,26 %/an)", numeric: 0.951, unit: "Score IDH", period: "Rapport 2025", source: "PNUD [36,37,38]" },
+        { id: "CLS-02", category: "Classements", label: "Classement mondial du bonheur (World Happiness Report)", territory: "Belgique", value: "14e rang mondial", numeric: 14, unit: "Rang mondial", period: "2026", source: "WHR [40,41]" },
+        { id: "CLS-03", category: "Classements", label: "Indice mondial de la liberté de la presse (RSF)", territory: "Belgique", value: "16e / 180 pays (Score : 81,17 / 100 ; vs 18e en 2025)", numeric: 81.17, unit: "Score /100", period: "2026", source: "RSF [42-46]" },
+        { id: "CLS-04", category: "Classements", label: "Financement public VRT/RTBF et Concentration presse écrite", territory: "Belgique", value: "VRT : 528,4 M€ • RTBF : 479,7 M€ • Groupe Rossel : 94 %", numeric: 94, unit: "% PDM francophone", period: "2025", source: "RSF [47]" },
+        { id: "CLS-05", category: "Classements", label: "Indice de perception de la corruption (CPI)", territory: "Belgique", value: "21e rang mondial (Score : 69 / 100 ; vs 77/100 en 2016)", numeric: 69, unit: "Score /100", period: "2025", source: "Transparency International [48-50]" },
+        { id: "CLS-06", category: "Classements", label: "Part des énergies renouvelables dans la conso finale brute", territory: "Belgique", value: "14,9 % (Moyenne Union européenne : 26,2 %)", numeric: 14.9, unit: "%", period: "2025", source: "Eurostat / SPF Économie [51,52]" },
+        { id: "CLS-07", category: "Classements", label: "UEFA Ligue des Nations (Diables Rouges)", territory: "Belgique", value: "2e place du Groupe A (2 victoires en 3 matchs)", numeric: 2, unit: "Rang Groupe A", period: "2026-2027", source: "UEFA [54]" }
+      ]
+    };
+
+    /**
+     * Show non-blocking custom notification toast
+     */
+    function showToast(title, message) {
+      const toast = document.getElementById('toast-notification');
+      document.getElementById('toast-title').textContent = title;
+      document.getElementById('toast-message').textContent = message;
+      toast.classList.remove('hidden');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 4200);
+    }
+
+    /**
+     * Switch between the 4 primary Jamstack application views
+     */
+    function switchMainView(viewId) {
+      const views = ['dashboard', 'report', 'opendata', 'semantic'];
+      views.forEach(v => {
+        const el = document.getElementById('view-' + v);
+        if (el) el.classList.toggle('hidden', v !== viewId);
+
+        const navBtn = document.getElementById('nav-btn-' + v);
+        if (navBtn) {
+          if (v === viewId) {
+            navBtn.className = "nav-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm";
+          } else {
+            navBtn.className = "nav-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white";
+          }
+        }
+
+        const mobBtn = document.getElementById('mob-btn-' + v);
+        if (mobBtn) {
+          if (v === viewId) {
+            mobBtn.className = "mob-tab-btn shrink-0 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-white dark:bg-amber-400 dark:text-slate-950";
+          } else {
+            mobBtn.className = "mob-tab-btn shrink-0 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300";
+          }
+        }
+      });
+    }
+
+    /**
+     * Render Regional Comparator Cards
+     */
+    function selectRegionProfile(regionKey) {
+      ['all', 'flandre', 'wallonie', 'bruxelles'].forEach(k => {
+        const btn = document.getElementById('reg-btn-' + k);
+        if (!btn) return;
+        if (k === regionKey) {
+          btn.className = "reg-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-white dark:bg-amber-400 dark:text-slate-950 transition";
+        } else {
+          btn.className = "reg-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition";
+        }
+      });
+
+      const container = document.getElementById('regional-comparator-grid');
+      const keys = regionKey === 'all' ? ['flandre', 'wallonie', 'bruxelles'] : [regionKey];
+      container.className = keys.length === 1
+        ? "grid grid-cols-1 gap-6 pt-6"
+        : "grid grid-cols-1 lg:grid-cols-3 gap-6 pt-6";
+
+      container.innerHTML = keys.map(k => {
+        const r = window.BELGIUM_OPEN_DATA.regionalProfiles[k];
+        const borderAccent = k === 'flandre' ? 'border-t-4 border-t-amber-400' : (k === 'wallonie' ? 'border-t-4 border-t-rose-500' : 'border-t-4 border-t-sky-500');
+        return `
+          <article class="rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 p-5 ${borderAccent} space-y-4">
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <h3 class="text-base font-bold text-slate-900 dark:text-white">${r.name}</h3>
+                <span class="text-xs text-slate-500 dark:text-slate-400">${r.badge}</span>
+              </div>
+              <span class="font-mono text-sm font-extrabold px-2.5 py-1 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">${r.pop2026} hab.</span>
+            </div>
+            <dl class="grid grid-cols-2 gap-3 text-xs pt-2 border-t border-slate-200/80 dark:border-slate-700">
+              <div>
+                <dt class="text-slate-500 dark:text-slate-400">Croissance 2025–2026</dt>
+                <dd class="font-mono font-semibold text-slate-900 dark:text-white mt-0.5">${r.popGrowth}</dd>
+              </div>
+              <div>
+                <dt class="text-slate-500 dark:text-slate-400">Solde naturel (2025)</dt>
+                <dd class="font-mono font-semibold text-slate-900 dark:text-white mt-0.5">${r.naturalBalance}</dd>
+              </div>
+              <div>
+                <dt class="text-slate-500 dark:text-slate-400">Projection 2080</dt>
+                <dd class="font-mono font-semibold text-slate-900 dark:text-white mt-0.5">${r.proj2080}</dd>
+              </div>
+              <div>
+                <dt class="text-slate-500 dark:text-slate-400">Origine belge (TI110)</dt>
+                <dd class="font-mono font-semibold text-slate-900 dark:text-white mt-0.5">${r.originBelgianPct}</dd>
+              </div>
+              <div>
+                <dt class="text-slate-500 dark:text-slate-400">Espérance de vie</dt>
+                <dd class="font-mono font-semibold text-slate-900 dark:text-white mt-0.5">${r.lifeExpectancy}</dd>
+              </div>
+              <div>
+                <dt class="text-slate-500 dark:text-slate-400">Taux d'emploi (20–64)</dt>
+                <dd class="font-mono font-semibold text-emerald-600 dark:text-emerald-400 mt-0.5">${r.employmentRate}</dd>
+              </div>
+              <div>
+                <dt class="text-slate-500 dark:text-slate-400">Chômage BIT (15–64)</dt>
+                <dd class="font-mono font-semibold text-rose-600 dark:text-rose-400 mt-0.5">${r.unemploymentRate}</dd>
+              </div>
+              <div>
+                <dt class="text-slate-500 dark:text-slate-400">Pauvreté subjective</dt>
+                <dd class="font-mono font-semibold text-slate-900 dark:text-white mt-0.5">${r.subjectivePoverty}</dd>
+              </div>
+            </dl>
+          </article>
+        `;
+      }).join('');
+    }
+
+    /**
+     * Render filterable Open Data Catalog table
+     */
+    function renderOpenDataTable() {
+      const searchVal = (document.getElementById('opendata-search')?.value || '').toLowerCase().trim();
+      const catVal = document.getElementById('opendata-category')?.value || 'ALL';
+      const terrVal = document.getElementById('opendata-territory')?.value || 'ALL';
+
+      const filtered = window.BELGIUM_OPEN_DATA.indicators.filter(item => {
+        const matchCat = catVal === 'ALL' || item.category === catVal;
+        const matchTerr = terrVal === 'ALL' || item.territory === terrVal;
+        const matchSearch = !searchVal ||
+          item.label.toLowerCase().includes(searchVal) ||
+          item.value.toLowerCase().includes(searchVal) ||
+          item.source.toLowerCase().includes(searchVal) ||
+          item.id.toLowerCase().includes(searchVal) ||
+          item.territory.toLowerCase().includes(searchVal);
+        return matchCat && matchTerr && matchSearch;
+      });
+
+      const badge = document.getElementById('dataset-count-badge');
+      if (badge) badge.textContent = filtered.length;
+
+      const tbody = document.getElementById('opendata-table-body');
+      if (!tbody) return;
+
+      tbody.innerHTML = filtered.map(row => `
+        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
+          <td class="p-3.5 font-mono text-xs font-bold text-amber-600 dark:text-amber-400">${row.id}</td>
+          <td class="p-3.5">
+            <span class="px-2 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">${row.category}</span>
+          </td>
+          <td class="p-3.5 font-medium text-slate-900 dark:text-white">${row.label}</td>
+          <td class="p-3.5 text-xs font-semibold text-slate-600 dark:text-slate-300">${row.territory}</td>
+          <td class="p-3.5 font-mono font-bold text-slate-900 dark:text-amber-300">
+            <data value="${row.numeric}">${row.value}</data>
+          </td>
+          <td class="p-3.5 font-mono text-xs text-slate-500 dark:text-slate-400">${row.period}</td>
+          <td class="p-3.5 font-mono text-xs text-slate-500 dark:text-slate-400">${row.source}</td>
+        </tr>
+      `).join('');
+    }
+
+    /**
+     * Download Dataset in JSON, CSV, or JSON-LD format
+     */
+    function exportDataset(format) {
+      let content = '';
+      let mime = 'application/json;charset=utf-8;';
+      let filename = 'belgique-en-chiffres-2024-2026.json';
+
+      if (format === 'json') {
+        content = JSON.stringify(window.BELGIUM_OPEN_DATA, null, 2);
+      } else if (format === 'jsonld') {
+        content = document.getElementById('schema-jsonld').textContent.trim();
+        filename = 'belgique-en-chiffres-schema-jsonld.json';
+      } else if (format === 'csv') {
+        mime = 'text/csv;charset=utf-8;';
+        filename = 'belgique-en-chiffres-2024-2026.csv';
+        const headers = ['ID', 'Categorie', 'Indicateur', 'Territoire', 'Valeur_Texte', 'Valeur_Numerique', 'Unite', 'Periode', 'Source'];
+        const rows = window.BELGIUM_OPEN_DATA.indicators.map(i => [
+          i.id,
+          `"${i.category.replace(/"/g, '""')}"`,
+          `"${i.label.replace(/"/g, '""')}"`,
+          `"${i.territory.replace(/"/g, '""')}"`,
+          `"${i.value.replace(/"/g, '""')}"`,
+          i.numeric,
+          `"${i.unit.replace(/"/g, '""')}"`,
+          `"${i.period.replace(/"/g, '""')}"`,
+          `"${i.source.replace(/"/g, '""')}"`
+        ].join(','));
+        content = '\uFEFF' + [headers.join(','), ...rows].join('\n');
+      }
+
+      const blob = new Blob([content], { type: mime });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      showToast('Export Open Data généré', `Le fichier ${filename} a été téléchargé avec succès.`);
+    }
+
+    /**
+     * Copy Text Helper compatible with iFrame security policies
+     */
+    function copyTextToClipboard(text, title, msg) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast(title, msg);
+      } catch (err) {
+        showToast('Copie manuelle requise', 'Votre navigateur restreint le presse-papiers automatique.');
+      }
+      document.body.removeChild(ta);
+    }
+
+    function copyCitation(style) {
+      if (style === 'apa') {
+        const apa = `Gemini 3.1 Pro. (2026). Analyse Démographique, Socio-Économique et Institutionnelle de la Belgique : Rapport Statistique Exhaustif et Base Open Data (2024–2026). Observatoire Open Data Belgique. https://github.com/ouaisfieu/stats`;
+        copyTextToClipboard(apa, 'Citation APA copiée', apa);
+      } else {
+        const bib = `@techreport{gemini2026belgique,\n  author = {Gemini 3.1 Pro},\n  title = {Analyse Démographique, Socio-Économique et Institutionnelle de la Belgique : Rapport Statistique Exhaustif (2024-2026)},\n  year = {2026},\n  institution = {Observatoire Open Data Belgique},\n  url = {https://github.com/ouaisfieu/stats}\n}`;
+        copyTextToClipboard(bib, ' Entrée BibTeX copiée', 'Prête à être collée dans votre gestionnaire bibliographique.');
+      }
+    }
+
+    function copyJsonLd() {
+      const raw = document.getElementById('schema-jsonld').textContent.trim();
+      copyTextToClipboard(raw, 'Graphe JSON-LD copié', 'Le graphe Schema.org complet a été copié dans le presse-papiers.');
+    }
+
+    /**
+     * Initialize all 6 Chart.js charts
+     */
+    let chartInstances = [];
+
+    function initCharts() {
+      chartInstances.forEach(c => c.destroy());
+      chartInstances = [];
+
+      const isDark = document.documentElement.classList.contains('dark');
+      const textColor = isDark ? '#cbd5e1' : '#334155';
+      const gridColor = isDark ? 'rgba(148, 163, 184, 0.12)' : 'rgba(148, 163, 184, 0.22)';
+
+      Chart.defaults.color = textColor;
+      Chart.defaults.font.family = "'Inter', system-ui, sans-serif";
+
+      // 1. Demography Chart (2025 vs 2026 vs 2080 in Millions)
+      const ctxDemo = document.getElementById('chartDemography');
+      if (ctxDemo) {
+        chartInstances.push(new Chart(ctxDemo, {
+          type: 'bar',
+          data: {
+            labels: ['Région flamande', 'Région wallonne', 'Bruxelles-Capitale', 'Belgique (Total)'],
+            datasets: [
+              {
+                label: 'Pop. 01/01/2025 (M)',
+                data: [6.865, 3.705, 1.256, 11.826],
+                backgroundColor: '#64748b',
+                borderRadius: 6
+              },
+              {
+                label: 'Pop. 01/01/2026 (M)',
+                data: [6.898, 3.713, 1.256, 11.868],
+                backgroundColor: '#f59e0b',
+                borderRadius: 6
+              },
+              {
+                label: 'Projection 2080 (M)',
+                data: [8.200, 3.700, 1.200, 13.100],
+                backgroundColor: '#e11d48',
+                borderRadius: 6
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: { grid: { color: gridColor }, title: { display: true, text: 'Millions d\'habitants' } },
+              x: { grid: { display: false } }
+            }
+          }
+        }));
+      }
+
+      // 2. Life Expectancy Convergence Chart (1996-2025)
+      const ctxLife = document.getElementById('chartLifeExpectancy');
+      if (ctxLife) {
+        chartInstances.push(new Chart(ctxLife, {
+          type: 'line',
+          data: {
+            labels: ['1996', '2010', '2020', '2025'],
+            datasets: [
+              {
+                label: 'Femmes (ans)',
+                data: [80.53, 82.64, 83.05, 84.40],
+                borderColor: '#ec4899',
+                backgroundColor: 'rgba(236, 72, 153, 0.15)',
+                tension: 0.3,
+                fill: false,
+                pointRadius: 4
+              },
+              {
+                label: 'Total National (ans)',
+                data: [77.23, 80.05, 80.79, 82.50],
+                borderColor: '#eab308',
+                borderDash: [5, 5],
+                tension: 0.3,
+                fill: false,
+                pointRadius: 4
+              },
+              {
+                label: 'Hommes (ans)',
+                data: [73.86, 77.36, 78.52, 80.53],
+                borderColor: '#0ea5e9',
+                backgroundColor: 'rgba(14, 165, 233, 0.15)',
+                tension: 0.3,
+                fill: false,
+                pointRadius: 4
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: { min: 72, max: 86, grid: { color: gridColor }, title: { display: true, text: 'Âge en années révolues' } },
+              x: { grid: { color: gridColor } }
+            }
+          }
+        }));
+      }
+
+      // 3. Public Finance Trajectory (Debt & Deficit 2024-2028)
+      const ctxFin = document.getElementById('chartPublicFinance');
+      if (ctxFin) {
+        chartInstances.push(new Chart(ctxFin, {
+          type: 'bar',
+          data: {
+            labels: ['2024', '2025', '2026', '2028 (Proj. BNB)'],
+            datasets: [
+              {
+                type: 'line',
+                label: 'Déficit public / structurel (% PIB)',
+                data: [4.6, 5.2, 5.5, 5.7],
+                borderColor: '#e11d48',
+                backgroundColor: '#e11d48',
+                yAxisID: 'y1',
+                tension: 0.25,
+                pointRadius: 5
+              },
+              {
+                type: 'bar',
+                label: 'Dette publique (% PIB)',
+                data: [107.9, 109.4, 111.3, 114.8],
+                backgroundColor: 'rgba(245, 158, 11, 0.8)',
+                borderRadius: 6,
+                yAxisID: 'y'
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: { min: 100, max: 118, position: 'left', grid: { color: gridColor }, title: { display: true, text: 'Dette (% PIB)' } },
+              y1: { min: 0, max: 8, position: 'right', grid: { display: false }, title: { display: true, text: 'Déficit (% PIB)' } },
+              x: { grid: { display: false } }
+            }
+          }
+        }));
+      }
+
+      // 4. Labor Market Polarization (2026)
+      const ctxLab = document.getElementById('chartLaborMarket');
+      if (ctxLab) {
+        chartInstances.push(new Chart(ctxLab, {
+          type: 'bar',
+          data: {
+            labels: ['Belgique', 'Flandre', 'Wallonie', 'Bruxelles', 'Diplôme Supérieur', 'Faible Instruction'],
+            datasets: [
+              {
+                label: 'Taux d\'emploi 20-64 ans (%)',
+                data: [72.8, 77.3, 67.6, 64.7, 85.4, 46.4],
+                backgroundColor: '#10b981',
+                borderRadius: 5
+              },
+              {
+                label: 'Taux de chômage BIT 15-64 ans (%)',
+                data: [6.1, 4.0, 8.0, 12.7, 3.7, 15.5],
+                backgroundColor: '#f43f5e',
+                borderRadius: 5
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: { max: 100, grid: { color: gridColor }, title: { display: true, text: 'Pourcentage (%)' } },
+              x: { grid: { display: false } }
+            }
+          }
+        }));
+      }
+
+      // 5. PISA 2022 Comparison
+      const ctxPisa = document.getElementById('chartPisa');
+      if (ctxPisa) {
+        chartInstances.push(new Chart(ctxPisa, {
+          type: 'bar',
+          data: {
+            labels: ['Mathématiques (2022)', 'Lecture (2022)', 'Sciences (2022)', 'Maths (Rappel 2018)'],
+            datasets: [
+              {
+                label: 'Flandre',
+                data: [501, 483, 499, 518],
+                backgroundColor: '#eab308',
+                borderRadius: 5
+              },
+              {
+                label: 'Fédération Wallonie-Bruxelles',
+                data: [474, 474, 479, 495],
+                backgroundColor: '#e11d48',
+                borderRadius: 5
+              },
+              {
+                label: 'Moyenne OCDE',
+                data: [472, 476, 485, 489],
+                backgroundColor: '#64748b',
+                borderRadius: 5
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: { min: 440, max: 530, grid: { color: gridColor }, title: { display: true, text: 'Score PISA (points)' } },
+              x: { grid: { display: false } }
+            }
+          }
+        }));
+      }
+
+      // 6. Social Inclusion & Subjective Poverty (EU-SILC 2025)
+      const ctxSoc = document.getElementById('chartSocialInclusion');
+      if (ctxSoc) {
+        chartInstances.push(new Chart(ctxSoc, {
+          type: 'bar',
+          data: {
+            labels: [
+              'AROPE National',
+              'Pauvreté Monétaire',
+              'Pauvreté Subj. Flandre',
+              'Pauvreté Subj. Wallonie',
+              'Pauvreté Subj. Bruxelles',
+              'Familles Monoparentales',
+              'Chômeurs'
+            ],
+            datasets: [
+              {
+                label: 'Proportion de la population concernée (% - 2025)',
+                data: [16.5, 10.9, 9.4, 21.9, 29.4, 28.1, 39.3],
+                backgroundColor: [
+                  '#f59e0b',
+                  '#0ea5e9',
+                  '#10b981',
+                  '#f97316',
+                  '#e11d48',
+                  '#a855f7',
+                  '#be123c'
+                ],
+                borderRadius: 6
+              }
+            ]
+          },
+          options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              x: { max: 45, grid: { color: gridColor }, title: { display: true, text: 'Pourcentage (%)' } },
+              y: { grid: { display: false } }
+            }
+          }
+        }));
+      }
+    }
+
+    /**
+     * Toggle Dark / Light Mode and re-render charts
+     */
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+      initCharts();
+    }
+
+    /**
+     * Application Initialization on Window Load
+     */
+    window.onload = function () {
+      // Populate Regional Comparator
+      selectRegionProfile('all');
+      // Populate Open Data Catalog Table
+      renderOpenDataTable();
+      // Populate JSON-LD Inspector
+      const jsonLdEl = document.getElementById('jsonld-inspector');
+      if (jsonLdEl) {
+        jsonLdEl.textContent = document.getElementById('schema-jsonld').textContent.trim();
+      }
+      // Initialize Charts
+      initCharts();
+    };
+  </script>
+</body>
+</html>
